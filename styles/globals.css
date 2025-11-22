@@ -275,7 +275,7 @@
   }
 
   .back-to-top {
-    @apply inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/80 bg-background/80 text-foreground shadow-lg transition hover:bg-primary hover:text-primary-foreground;
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/80 bg-background/80 text-foreground shadow-lg transition hover:bg-primary hover:text-primary-foreground translate-y-4;
   }
 
   .animate-accordion-down {
