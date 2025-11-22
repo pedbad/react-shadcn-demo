@@ -66,7 +66,7 @@ export function LangCenApp() {
             />
           </figure>
         </div>
-        <div className="flex flex-col gap-12 pt-12">
+        <div className="flex flex-col pt-12">
           <section id="language-centre" aria-labelledby="language-centre-heading" className="section-panel section-panel-hero">
             <div className="section-inner">
               <p className={cn("section-label text-sm", activeSection === "language-centre" && "section-label-active")}>
