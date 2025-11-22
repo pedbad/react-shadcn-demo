@@ -1,0 +1,56 @@
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
+type Theme = "light" | "dark";
+
+const STORAGE_KEY = "langcen-theme";
+
+const getPreferredTheme = (): Theme => {
+  if (typeof window === "undefined") return "light";
+
+  const stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
+  if (stored === "light" || stored === "dark") return stored;
+
+  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+  return prefersDark ? "dark" : "light";
+};
+
+const applyTheme = (theme: Theme) => {
+  if (typeof document === "undefined") return;
+  document.documentElement.classList.toggle("dark", theme === "dark");
+};
+
+export function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    const preferred = getPreferredTheme();
+    setTheme(preferred);
+    applyTheme(preferred);
+  }, []);
+
+  const toggle = () => {
+    setTheme(prev => {
+      const next = prev === "light" ? "dark" : "light";
+      applyTheme(next);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(STORAGE_KEY, next);
+      }
+      return next;
+    });
+  };
+
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={toggle}
+      aria-pressed={theme === "dark"}
+      aria-label="Toggle dark mode"
+    >
+      {theme === "dark" ? <Moon className="h-[1.2rem] w-[1.2rem]" /> : <Sun className="h-[1.2rem] w-[1.2rem]" />}
+    </Button>
+  );
+}
