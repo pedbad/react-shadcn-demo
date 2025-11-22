@@ -34,3 +34,10 @@ This project was created with `bun init` using the React + Tailwind + shadcn pre
    bun start
    ```
    `bun run build.ts` outputs static assets into `dist/` and `bun start` serves them with the Bun runtime.
+
+## Theming & Tailwind configuration
+
+- **Global color tokens** live in `styles/globals.css`. The `@theme inline` block maps Tailwind utilities (e.g., `bg-background`, `text-primary`) to CSS custom properties, while the `:root` and `.dark` sections provide the light/dark palettes shadcn components consume.
+- **Dark mode** is controlled by toggling a `.dark` class on the root element. Because both palettes expose the same CSS variables, switching modes automatically updates every Tailwind utility and shadcn component referencing them.
+- **Fonts** are set globally in `src/index.css` via `@layer base`. Update the `font-sans` family inside the inline theme or define custom `@font-face` rules in `styles/globals.css` to change typography everywhere.
+- **No `tailwind.config.js`** is required with Tailwind v4—theme customization happens directly inside `styles/globals.css`, keeping design tokens close to the CSS that consumes them.
