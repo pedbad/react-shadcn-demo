@@ -110,8 +110,8 @@
   --chart-4: oklch(0.55 0.005 240);
   --chart-5: oklch(0.8 0.002 240);
 
-  --section-panel-bg: color-mix(in oklch, var(--background), white 8%);
-  --section-panel-wave: color-mix(in oklch, var(--section-panel-bg), var(--primary) 6%);
+  --section-panel-bg: color-mix(in oklch, var(--background), white 6%);
+  --section-panel-wave: color-mix(in oklch, var(--primary), var(--background) 30%);
 
   /* Sidebar */
   --sidebar: var(--background);
@@ -167,8 +167,8 @@
   --chart-4: oklch(0.5 0.005 240);
   --chart-5: oklch(0.3 0.002 240);
 
-  --section-panel-bg: color-mix(in oklch, var(--background), black 40%);
-  --section-panel-wave: color-mix(in oklch, var(--section-panel-bg), var(--primary) 25%);
+  --section-panel-bg: color-mix(in oklch, var(--background), var(--primary) 20%);
+  --section-panel-wave: color-mix(in oklch, var(--primary), var(--background) 15%);
 
   /* Sidebar */
   --sidebar: var(--card);
@@ -259,7 +259,7 @@
     background-size: 100% 100%;
     opacity: 0.6;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M0 0v99.7C62 69 122.4 48.7 205 66c83.8 17.6 160.5 20.4 240-12 54-22 110-26 173-10a392.2 392.2 0 0 0 222-5c55-17 110.3-36.9 160-27.2V0H0Z' opacity='.14'/%3E%3Cpath d='M0 0v74.7C62 44 122.4 28.7 205 46c83.8 17.6 160.5 25.4 240-7 54-22 110-21 173-5 76.5 19.4 146.5 23.3 222 0 55-17 110.3-31.9 160-22.2V0H0Z' opacity='.3'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M0 1v99c134.3 0 153.7-99 296-99H0Z' opacity='.15'/%3E%3Cpath d='M1000 4v86C833.3 90 833.3 3.6 666.7 3.6S500 90 333.3 90 166.7 4 0 4h1000Z' opacity='.2'/%3E%3Cpath d='M617 1v86C372 119 384 1 196 1h421Z' opacity='.18'/%3E%3Cpath d='M1000 0H0v52C62.5 28 125 4 250 4c250 0 250 96 500 96 125 0 187.5-24 250-48V0Z' opacity='.4'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   .section-inner {
