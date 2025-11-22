@@ -5,6 +5,7 @@ import layersIcon from "./icons/layers.svg";
 import typeIcon from "./icons/type.svg";
 
 import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang-cen-nav";
+import { Icon } from "./components/Icon";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import "./index.css";
@@ -119,11 +120,11 @@ export function LangCenApp() {
                   <Tabs defaultValue="semantic" className="mt-6">
                     <TabsList aria-label="Vocabulary lenses">
                       <TabsTrigger value="semantic">
-                        <img src={layersIcon} alt="" aria-hidden="true" className="mr-2 h-4 w-4" />
+                        <Icon src={layersIcon} className="mr-2 h-4 w-4" />
                         Semantic
                       </TabsTrigger>
                       <TabsTrigger value="alphabetic">
-                        <img src={typeIcon} alt="" aria-hidden="true" className="mr-2 h-4 w-4" />
+                        <Icon src={typeIcon} className="mr-2 h-4 w-4" />
                         Alphabetic
                       </TabsTrigger>
                     </TabsList>

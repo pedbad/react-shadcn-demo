@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import moonIcon from "../icons/moon.svg";
 import sunIcon from "../icons/sun.svg";
 import { Button } from "@/components/ui/button";
+import { Icon } from "./Icon";
 
 type Theme = "light" | "dark";
 
@@ -51,18 +52,8 @@ export function ThemeToggle() {
       aria-label="Toggle dark mode"
       className="text-foreground"
     >
-      <img
-        src={sunIcon}
-        alt=""
-        aria-hidden="true"
-        className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-      />
-      <img
-        src={moonIcon}
-        alt=""
-        aria-hidden="true"
-        className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-      />
+      <Icon src={sunIcon} className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Icon src={moonIcon} className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
     </Button>
   );
 }

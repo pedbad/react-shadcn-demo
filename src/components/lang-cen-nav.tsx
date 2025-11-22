@@ -5,6 +5,7 @@ import closeIcon from "../icons/close.svg";
 import menuIcon from "../icons/menu.svg";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Icon } from "./Icon";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuTriggerButton } from "./ui/dropdown-menu";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -98,7 +99,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
           aria-label="Go to landing page"
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <img src={brandIcon} alt="" className="h-5 w-5" aria-hidden="true" />
+            <Icon src={brandIcon} className="h-5 w-5" />
           </span>
           <span>eLearning</span>
         </a>
@@ -125,7 +126,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
             aria-controls={navId}
             onClick={() => setIsOpen(prev => !prev)}
           >
-            <img src={isOpen ? closeIcon : menuIcon} alt="" aria-hidden="true" className="h-5 w-5" />
+            <Icon src={isOpen ? closeIcon : menuIcon} className="h-5 w-5" />
           </Button>
         </div>
       </div>

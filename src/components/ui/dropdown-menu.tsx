@@ -3,6 +3,7 @@ import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 
 import chevronIcon from "../../icons/chevron-down.svg";
 import { cn } from "@/lib/utils";
+import { Icon } from "../Icon";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -51,7 +52,7 @@ const DropdownMenuTriggerButton = React.forwardRef<HTMLButtonElement, React.Comp
       )}
       {...props}
     >
-      {children ?? <img src={chevronIcon} alt="" aria-hidden="true" className="h-4 w-4" />}
+      {children ?? <Icon src={chevronIcon} className="h-4 w-4" />}
     </button>
   ),
 );
