@@ -230,7 +230,8 @@
   }
 
   .hero-banner-image {
-    @apply h-full w-full object-cover;
+    @apply w-full object-cover;
+    height: clamp(12rem, 40vh, 22rem);
   }
 
   .section-label {
