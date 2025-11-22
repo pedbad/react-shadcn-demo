@@ -247,11 +247,11 @@
   }
 
   .body-lead {
-    @apply text-lg leading-relaxed text-primary-foreground/90;
+    @apply text-lg leading-relaxed text-foreground/80;
   }
 
   .body-copy {
-    @apply text-base leading-relaxed text-primary-foreground/85;
+    @apply text-base leading-relaxed text-foreground/75;
   }
 
   .nav-link {
