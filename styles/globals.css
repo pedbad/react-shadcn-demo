@@ -235,15 +235,15 @@
   }
 
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/70;
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-foreground/60;
   }
 
   .heading-hero {
-    @apply text-5xl font-semibold;
+    @apply text-5xl font-semibold text-foreground;
   }
 
   .heading-section {
-    @apply text-3xl font-semibold;
+    @apply text-3xl font-semibold text-foreground;
   }
 
   .body-lead {
