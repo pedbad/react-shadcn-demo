@@ -270,7 +270,7 @@
   }
 
   .accordion-trigger {
-    @apply flex flex-1 items-center gap-3 border-b border-transparent py-4 text-left text-sm font-medium transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary cursor-pointer [&>svg]:transition-transform [&[data-state=open]>svg]:rotate-180;
+    @apply flex flex-1 items-center gap-3 border-b border-transparent py-4 text-left text-sm font-medium transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary cursor-pointer [&>svg]:transition-transform [&[data-state=open]>svg]:rotate-180 data-[state=open]:border-primary/40 data-[state=open]:bg-primary/5 data-[state=open]:text-primary;
   }
 
   .section-label {
