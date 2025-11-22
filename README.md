@@ -1,21 +1,36 @@
 # bun-react-tailwind-shadcn-template
 
-To install dependencies:
+![Bun](https://img.shields.io/badge/Bun-1.3.1-000000?logo=bun&logoColor=ffffff)
+![React](https://img.shields.io/badge/React-19.0.0-20232a?logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.11-0F172A?logo=tailwindcss&logoColor=38B2AC)
 
-```bash
-bun install
-```
+This project was created with `bun init` using the React + Tailwind + shadcn preset. Follow the steps below to download, install, and run it locally.
 
-To start a development server:
+## Prerequisites
 
-```bash
-bun dev
-```
+- [Bun](https://bun.com) **v1.3.1** or newer installed on your machine
+- Git access to `git@github.com:pedbad/react-shadcn-demo.git`
 
-To run for production:
+## Installation
 
-```bash
-bun start
-```
+1. **Clone the repository**
+   ```bash
+   git clone git@github.com:pedbad/react-shadcn-demo.git
+   cd react-shadcn-demo
+   ```
+2. **Install dependencies**
+   ```bash
+   bun install
+   ```
+3. **Start the development server**
+   ```bash
+   bun dev
+   ```
+   Bun serves the app at the URL printed in the terminal and reloads on changes.
 
-This project was created using `bun init` in bun v1.3.1. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+4. **(Optional) Run the production build locally**
+   ```bash
+   bun run build.ts
+   bun start
+   ```
+   `bun run build.ts` outputs static assets into `dist/` and `bun start` serves them with the Bun runtime.
