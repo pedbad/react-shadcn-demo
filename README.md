@@ -41,3 +41,11 @@ This project was created with `bun init` using the React + Tailwind + shadcn pre
 - **Dark mode** is controlled by toggling a `.dark` class on the root element. Because both palettes expose the same CSS variables, switching modes automatically updates every Tailwind utility and shadcn component referencing them.
 - **Fonts** are set globally in `src/index.css` via `@layer base`. Update the `font-sans` family inside the inline theme or define custom `@font-face` rules in `styles/globals.css` to change typography everywhere.
 - **No `tailwind.config.js`** is required with Tailwind v4—theme customization happens directly inside `styles/globals.css`, keeping design tokens close to the CSS that consumes them.
+
+### Current theme: Cambridge University palette
+
+The default palette now mirrors Cambridge University branding:
+
+- **Light mode** blends Cambridge Blue interactive elements with a cream backdrop for academic presentation while maintaining WCAG AA contrast (oklch-based tokens in `:root`).
+- **Dark mode** swaps to a deep navy base with brightened Cambridge Blue primaries for readability (tokens in the `.dark` block).
+- Custom vars like `--cambridge-blue`, `--cambridge-cream`, and `--cambridge-dark-navy` keep the palette centralized and easy to tweak.

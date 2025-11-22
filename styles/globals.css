@@ -1,3 +1,26 @@
+/**
+ * --------------------------------------------------------------------------
+ * THEME SUMMARY: CAMBRIDGE UNIVERSITY & ACCESSIBILITY
+ * --------------------------------------------------------------------------
+ * * This theme implements the distinctive University of Cambridge branding using 
+ * OKLCH color variables for shadcn/ui, with careful attention to WCAG AA accessibility.
+ * * 🏛️ CAMBRIDGE COLOR STRATEGY:
+ * * 1.  Cambridge Blue (Primary): The core institutional color, used for 
+ * interactive elements, buttons, and accents.
+ * 2.  Background/Neutral: Uses a creamy off-white for light mode and a deep 
+ * navy/near-black for dark mode, providing an academic and rich feel.
+ * * ♿ ACCESSIBILITY (WCAG AA) HIGHLIGHTS (4.5:1 Contrast):
+ * * * Light Mode Primary: Deepened the primary blue to oklch(0.38 0.08 245) 
+ * to ensure sufficient contrast against pure white text (`primary-foreground`).
+ * * Dark Mode Primary: Brightened the primary blue to oklch(0.6 0.12 245) 
+ * to ensure sufficient contrast against dark navy text (`primary-foreground`).
+ * * ⚙️ IMPLEMENTATION NOTES:
+ * * * Color Format: All colors use the modern OKLCH color space for better 
+ * perceptual uniformity.
+ * * Custom Variables: Defined two custom variables for better brand color management:
+ * --cambridge-blue / --cambridge-blue-dark
+ * --cambridge-cream / --cambridge-dark-navy
+ * */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -42,72 +65,113 @@
 }
 
 :root {
+  /* Cambridge Blue (Accessible) */
+  --cambridge-blue: oklch(0.38 0.08 245);
+  /* Creamy White */
+  --cambridge-cream: oklch(0.98 0.005 85);
+
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+
+  /* Light Mode Base & Surfaces */
+  --background: var(--cambridge-cream);
+  --foreground: oklch(0.12 0.005 240); /* Near-black text */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: var(--foreground);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: var(--foreground);
+
+  /* Primary (Deep Cambridge Blue, ensures 4.5:1 contrast with white text) */
+  --primary: var(--cambridge-blue);
+  --primary-foreground: oklch(1 0 0); /* Pure White text */
+
+  /* Secondary & Muted */
+  --secondary: oklch(0.92 0.005 240);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.95 0.005 240);
+  --muted-foreground: oklch(0.55 0.005 240);
+
+  /* Accent */
+  --accent: oklch(0.85 0.02 245);
+  --accent-foreground: var(--foreground);
+
+  /* Destructive */
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Borders & Rings */
+  --border: oklch(0.88 0.005 240);
+  --input: oklch(0.88 0.005 240);
+  --ring: oklch(0.48 0.1 245); /* Lighter version of primary for focus ring */
+
+  /* Charts - Shades of Blue/Grey */
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.55 0.08 245);
+  --chart-3: oklch(0.75 0.05 245);
+  --chart-4: oklch(0.55 0.005 240);
+  --chart-5: oklch(0.8 0.002 240);
+
+  /* Sidebar */
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  /* Dark Navy */
+  --cambridge-dark-navy: oklch(0.12 0.005 240);
+  /* Brighter Cambridge Blue (Accessible) */
+  --cambridge-blue-dark: oklch(0.6 0.12 245);
+
+  /* Dark Mode Base & Surfaces */
+  --background: var(--cambridge-dark-navy);
+  --foreground: oklch(0.95 0.01 240); /* Off-white text */
+  --card: oklch(0.18 0.005 240);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* Primary (Brighter Cambridge Blue, ensures 4.5:1 contrast with dark text) */
+  --primary: var(--cambridge-blue-dark);
+  --primary-foreground: oklch(0.12 0.005 240); /* Dark text on blue */
+
+  /* Secondary & Muted */
+  --secondary: oklch(0.25 0.005 240);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.2 0.005 240);
+  --muted-foreground: oklch(0.7 0.01 240);
+
+  /* Accent */
+  --accent: oklch(0.3 0.01 245);
+  --accent-foreground: var(--foreground);
+
+  /* Destructive */
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+
+  /* Borders & Rings */
+  --border: oklch(0.3 0.005 240);
+  --input: oklch(0.3 0.005 240);
+  --ring: oklch(0.7 0.12 245); /* Lighter primary for focus ring */
+
+  /* Charts - Shades of Blue/Grey */
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.75 0.1 245);
+  --chart-3: oklch(0.85 0.05 245);
+  --chart-4: oklch(0.5 0.005 240);
+  --chart-5: oklch(0.3 0.002 240);
+
+  /* Sidebar */
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: oklch(0.3 0.005 240);
+  --sidebar-ring: oklch(0.7 0.12 245);
 }
 
 @layer base {
