@@ -250,19 +250,6 @@
     background: linear-gradient(180deg, var(--section-panel-wave) 0%, var(--section-panel-bg) 100%);
   }
 
-  .section-panel::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 -1px;
-    height: 110px;
-    transform: rotate(180deg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    opacity: 0.6;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M0 1v99c134.3 0 153.7-99 296-99H0Z' opacity='.15'/%3E%3Cpath d='M1000 4v86C833.3 90 833.3 3.6 666.7 3.6S500 90 333.3 90 166.7 4 0 4h1000Z' opacity='.2'/%3E%3Cpath d='M617 1v86C372 119 384 1 196 1h421Z' opacity='.18'/%3E%3Cpath d='M1000 0H0v52C62.5 28 125 4 250 4c250 0 250 96 500 96 125 0 187.5-24 250-48V0Z' opacity='.4'/%3E%3C/g%3E%3C/svg%3E");
-  }
-
   .section-inner {
     @apply relative z-10 container mx-auto max-w-5xl space-y-4 px-6;
   }
