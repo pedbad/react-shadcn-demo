@@ -126,7 +126,7 @@ type NavListProps = {
 function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
   return (
     <ul
-      className={cn("items-center gap-6 text-[0.6rem] font-normal tracking-wide", {
+      className={cn("items-center gap-6", {
         "flex": orientation === "horizontal",
         "flex flex-col items-stretch gap-3 py-2 text-sm": orientation === "vertical",
       })}
@@ -140,15 +140,13 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
               href={item.href}
               onClick={() => onItemClick?.(item.href)}
               className={cn(
-                "border-solid text-[0.72rem] transition-all duration-200",
-                isVertical ? "flex w-full items-center border-l pl-3" : "inline-flex items-center border-b pb-1",
+                "nav-link",
+                isVertical ? "nav-link-vertical" : "nav-link-horizontal",
                 isActive
                   ? isVertical
-                    ? "border-l-4 border-primary text-primary font-semibold"
-                    : "border-b-[3px] border-primary text-primary font-semibold"
-                  : isVertical
-                    ? "border-l border-transparent text-foreground/80 hover:border-primary/60 hover:text-primary"
-                    : "border-b border-transparent text-foreground/70 hover:border-primary hover:text-primary",
+                    ? "nav-link-vertical-active"
+                    : "nav-link-horizontal-active"
+                  : undefined,
               )}
               aria-current={isActive ? "page" : undefined}
             >

@@ -183,3 +183,89 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 outline-none;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-tertiary {
+    @apply border border-primary/30 bg-transparent text-primary hover:border-primary hover:text-primary-foreground hover:bg-primary;
+  }
+
+  .btn-xs {
+    @apply h-7 px-3 text-xs;
+  }
+
+  .btn-sm {
+    @apply h-8 px-3 text-sm;
+  }
+
+  .btn-md {
+    @apply h-10 px-5 text-sm;
+  }
+
+  .btn-lg {
+    @apply h-12 px-6 text-base;
+  }
+
+  .btn-xl {
+    @apply h-14 px-8 text-lg;
+  }
+
+  .section-panel {
+    @apply scroll-mt-32 min-h-[55vh] rounded-3xl bg-primary-foreground/5 px-8 py-12 shadow-lg ring-1 ring-white/10 backdrop-blur;
+  }
+
+  .section-panel-hero {
+    @apply flex flex-col justify-center gap-6;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/70;
+  }
+
+  .heading-hero {
+    @apply text-5xl font-semibold;
+  }
+
+  .heading-section {
+    @apply text-3xl font-semibold;
+  }
+
+  .body-lead {
+    @apply text-lg leading-relaxed text-primary-foreground/90;
+  }
+
+  .body-copy {
+    @apply text-base leading-relaxed text-primary-foreground/85;
+  }
+
+  .nav-link {
+    @apply border-solid text-[0.72rem] font-medium tracking-wide text-foreground/70 transition-all duration-200 hover:text-primary;
+  }
+
+  .nav-link-horizontal {
+    @apply inline-flex items-center border-b border-transparent pb-1;
+  }
+
+  .nav-link-horizontal-active {
+    @apply border-b-[3px] border-primary text-primary font-semibold;
+  }
+
+  .nav-link-vertical {
+    @apply flex w-full items-center border-l border-transparent pl-3 py-1;
+  }
+
+  .nav-link-vertical-active {
+    @apply border-l-4 border-primary text-primary font-semibold;
+  }
+}
