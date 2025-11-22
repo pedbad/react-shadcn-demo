@@ -130,10 +130,10 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
               href={item.href}
               onClick={() => onItemClick?.(item.href)}
               className={cn(
-                "inline-flex items-center pb-1 text-base transition-all duration-200",
+                "inline-flex items-center border-b-[3px] border-solid border-transparent pb-1 text-base text-foreground/70 transition-all duration-200",
                 isActive
-                  ? "border-b-[5px] border-[color:var(--primary)] text-[color:var(--primary)] font-semibold"
-                  : "border-b-[3px] border-transparent text-foreground/70 hover:border-[color:var(--primary)] hover:text-[color:var(--primary)]",
+                  ? "border-b-[5px] border-primary text-primary font-semibold"
+                  : "hover:border-primary hover:text-primary",
               )}
               aria-current={isActive ? "page" : undefined}
             >
