@@ -170,10 +170,23 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
 
         if (item.label === "Exercises" && orientation === "horizontal") {
           return (
-            <li key="exercises-dropdown">
+            <li key={item.href} className="flex items-center gap-2">
+              <a
+                href={item.href}
+                onClick={() => onItemClick?.(item.href)}
+                className={cn(
+                  "nav-link nav-link-horizontal",
+                  isActive ? "nav-link-horizontal-active" : undefined,
+                )}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <DropdownMenuTriggerButton type="button">Exercises</DropdownMenuTriggerButton>
+                  <DropdownMenuTriggerButton type="button" aria-label="More exercises" caret>
+                    …
+                  </DropdownMenuTriggerButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   {exerciseNavItems.map(entry => (
