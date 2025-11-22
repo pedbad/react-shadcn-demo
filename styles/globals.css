@@ -323,7 +323,7 @@
   }
 
   .nav-link {
-    @apply border-solid text-[0.72rem] font-medium tracking-wide text-foreground/70 transition-all duration-200 hover:text-primary;
+    @apply border-solid text-[0.6rem] font-normal tracking-[0.15em] text-foreground/65 transition-all duration-200 hover:text-primary;
   }
 
   .nav-link-horizontal {
