@@ -132,8 +132,8 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
               className={cn(
                 "inline-flex items-center pb-1 text-base transition-all duration-200",
                 isActive
-                  ? "border-b-[5px] border-solid border-primary text-primary font-semibold"
-                  : "border-b-[3px] border-solid border-transparent text-foreground/70 hover:border-primary hover:text-primary",
+                  ? "border-b-[3px] border-solid border-primary text-primary font-semibold"
+                  : "border-b border-solid border-transparent text-foreground/70 hover:border-primary hover:text-primary",
               )}
               aria-current={isActive ? "page" : undefined}
             >
