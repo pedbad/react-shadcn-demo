@@ -6,10 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import "./index.css";
 
 export function LangCenApp() {
-  const [openExercise, setOpenExercise] = useState<string>(exerciseNavItems[0].value);
+  const [openExercises, setOpenExercises] = useState<string[]>([exerciseNavItems[0].value]);
 
   const handleExerciseNavigate = useCallback((value: string) => {
-    setOpenExercise(value);
+    setOpenExercises(prev => (prev.includes(value) ? prev : [...prev, value]));
     if (typeof document !== "undefined") {
       requestAnimationFrame(() => {
         const target = document.getElementById(value);
@@ -62,7 +62,7 @@ export function LangCenApp() {
                   pharetra ligula lectus, non laoreet sapien cursus ut.
                 </p>
                 {slug === "dialogues" && (
-                  <Accordion type="single" collapsible className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
+                  <Accordion type="multiple" className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
                     <AccordionItem value="dialogue-1">
                       <AccordionTrigger>Academic mentoring scenario</AccordionTrigger>
                       <AccordionContent>
@@ -115,14 +115,11 @@ export function LangCenApp() {
                 )}
                 {slug === "exercises" && (
                   <Accordion
-                    type="single"
-                    collapsible
+                    type="multiple"
                     className="rounded-2xl border border-border/80 bg-background/80"
-                    value={openExercise}
+                    value={openExercises}
                     onValueChange={value => {
-                      if (value) {
-                        setOpenExercise(value);
-                      }
+                      setOpenExercises(Array.isArray(value) ? value : []);
                     }}
                   >
                     {exerciseNavItems.map(entry => (
