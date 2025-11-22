@@ -230,7 +230,7 @@
   }
 
   .hero-banner {
-    @apply relative overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-r from-[color-mix(in_oklch,var(--primary) 35%,white)] via-[color-mix(in_oklch,var(--primary) 15%,white)] to-[color-mix(in_oklch,var(--primary) 10%,white)] px-10 py-16 text-primary-foreground shadow-xl;
+    @apply relative overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-r from-primary/60 via-primary/20 to-primary/10 px-10 py-16 text-primary-foreground shadow-xl;
   }
 
   .hero-banner::after {
