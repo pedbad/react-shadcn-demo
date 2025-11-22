@@ -1,6 +1,8 @@
 import { useEffect, useId, useState } from "react";
-import { GraduationCap, Menu, X } from "lucide-react";
 
+import brandIcon from "@/icons/graduation.svg";
+import closeIcon from "@/icons/close.svg";
+import menuIcon from "@/icons/menu.svg";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuTriggerButton } from "./ui/dropdown-menu";
@@ -96,7 +98,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
           aria-label="Go to landing page"
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <GraduationCap className="h-5 w-5" />
+            <img src={brandIcon} alt="" className="h-5 w-5" aria-hidden="true" />
           </span>
           <span>eLearning</span>
         </a>
@@ -123,7 +125,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
             aria-controls={navId}
             onClick={() => setIsOpen(prev => !prev)}
           >
-            {isOpen ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
+            <img src={isOpen ? closeIcon : menuIcon} alt="" aria-hidden="true" className="h-5 w-5" />
           </Button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { ChevronDown } from "lucide-react";
 
+import chevronIcon from "@/icons/chevron-down.svg";
 import { cn } from "@/lib/utils";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
@@ -51,7 +51,7 @@ const DropdownMenuTriggerButton = React.forwardRef<HTMLButtonElement, React.Comp
       )}
       {...props}
     >
-      {children ?? <ChevronDown className="h-4 w-4" />}
+      {children ?? <img src={chevronIcon} alt="" aria-hidden="true" className="h-4 w-4" />}
     </button>
   ),
 );

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "./lib/utils";
 
-import { Layers, Type } from "lucide-react";
+import layersIcon from "@/icons/layers.svg";
+import typeIcon from "@/icons/type.svg";
 
 import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang-cen-nav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
@@ -118,11 +119,11 @@ export function LangCenApp() {
                   <Tabs defaultValue="semantic" className="mt-6">
                     <TabsList aria-label="Vocabulary lenses">
                       <TabsTrigger value="semantic">
-                        <Layers className="mr-2 h-4 w-4" />
+                        <img src={layersIcon} alt="" aria-hidden="true" className="mr-2 h-4 w-4" />
                         Semantic
                       </TabsTrigger>
                       <TabsTrigger value="alphabetic">
-                        <Type className="mr-2 h-4 w-4" />
+                        <img src={typeIcon} alt="" aria-hidden="true" className="mr-2 h-4 w-4" />
                         Alphabetic
                       </TabsTrigger>
                     </TabsList>
