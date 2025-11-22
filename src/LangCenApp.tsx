@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { cn } from "./lib/utils";
 
 import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang-cen-nav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
@@ -7,6 +8,7 @@ import "./index.css";
 
 export function LangCenApp() {
   const [openExercises, setOpenExercises] = useState<string[]>([exerciseNavItems[0].value]);
+  const [activeSection, setActiveSection] = useState<string>("language-centre");
 
   const handleExerciseNavigate = useCallback((value: string) => {
     setOpenExercises(prev => (prev.includes(value) ? prev : [...prev, value]));
@@ -19,6 +21,31 @@ export function LangCenApp() {
         window.scrollTo({ top: offsetTop, behavior: "smooth" });
       });
     }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const sections = ["language-centre", ...langCenNavItems.map(item => item.href.slice(1))]
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    sections.forEach(section => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -38,7 +65,9 @@ export function LangCenApp() {
         <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-12">
 
           <section id="language-centre" aria-labelledby="language-centre-heading" className="section-panel section-panel-hero">
-            <p className="section-label text-sm">Language Centre</p>
+            <p className={cn("section-label text-sm", activeSection === "language-centre" && "section-label-active")}>
+              Language Centre
+            </p>
             <h1 id="language-centre-heading" className="heading-hero">
               The quick brown fox jumps over the lazy dog.
             </h1>
@@ -52,7 +81,7 @@ export function LangCenApp() {
             const slug = item.href.slice(1);
             return (
               <section key={item.href} id={slug} aria-labelledby={`${slug}-heading`} className="section-panel space-y-4">
-                <p className="section-label">{item.label}</p>
+                <p className={cn("section-label", activeSection === slug && "section-label-active")}>{item.label}</p>
                 <h2 id={`${slug}-heading`} className="heading-section">
                   The quick brown fox jumps over the lazy dog.
                 </h2>

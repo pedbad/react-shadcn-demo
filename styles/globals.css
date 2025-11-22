@@ -274,7 +274,11 @@
   }
 
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.3em] text-foreground/60;
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-foreground/60 transition-colors;
+  }
+
+  .section-label-active {
+    @apply text-primary;
   }
 
   .heading-hero {
