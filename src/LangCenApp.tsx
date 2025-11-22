@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "./lib/utils";
 
-import layersIcon from "@/icons/layers.svg";
-import typeIcon from "@/icons/type.svg";
+import layersIcon from "./icons/layers.svg";
+import typeIcon from "./icons/type.svg";
 
 import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang-cen-nav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";

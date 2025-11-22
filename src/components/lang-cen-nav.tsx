@@ -1,8 +1,8 @@
 import { useEffect, useId, useState } from "react";
 
-import brandIcon from "@/icons/graduation.svg";
-import closeIcon from "@/icons/close.svg";
-import menuIcon from "@/icons/menu.svg";
+import brandIcon from "../icons/graduation.svg";
+import closeIcon from "../icons/close.svg";
+import menuIcon from "../icons/menu.svg";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuTriggerButton } from "./ui/dropdown-menu";

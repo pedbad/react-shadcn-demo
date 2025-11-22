@@ -3,9 +3,9 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
 import * as React from "react";
 
-import checkIcon from "@/icons/check.svg";
-import chevronDownIcon from "@/icons/chevron-down.svg";
-import chevronUpIcon from "@/icons/chevron-up.svg";
+import checkIcon from "../../icons/check.svg";
+import chevronDownIcon from "../../icons/chevron-down.svg";
+import chevronUpIcon from "../../icons/chevron-up.svg";
 import { cn } from "@/lib/utils";
 
 function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {

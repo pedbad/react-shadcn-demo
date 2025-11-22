@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import moonIcon from "@/icons/moon.svg";
-import sunIcon from "@/icons/sun.svg";
+import moonIcon from "../icons/moon.svg";
+import sunIcon from "../icons/sun.svg";
 import { Button } from "@/components/ui/button";
 
 type Theme = "light" | "dark";
