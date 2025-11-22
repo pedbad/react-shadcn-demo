@@ -245,10 +245,21 @@
     @apply h-14 px-8 text-lg;
   }
 
-  .section-panel {
-    @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-[100vh] py-28;
-    background: linear-gradient(180deg, var(--section-panel-wave) 0%, var(--section-panel-bg) 100%);
-  }
+.section-panel {
+  @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-[100vh] py-28;
+  background: linear-gradient(180deg, var(--section-panel-wave) 0%, var(--section-panel-bg) 100%);
+}
+
+.section-panel::before {
+  content: "";
+  @apply absolute inset-0 block bg-[var(--section-panel-bg)];
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  opacity: 0.8;
+}
+
+.section-inner {
+  @apply relative z-10 container mx-auto max-w-5xl space-y-4 px-6;
+}
 
   .section-inner {
     @apply relative z-10 container mx-auto max-w-5xl space-y-4 px-6;
