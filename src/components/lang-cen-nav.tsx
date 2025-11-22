@@ -6,7 +6,13 @@ import menuIcon from "../icons/menu.svg";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Icon } from "./Icon";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuTriggerButton } from "./ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuTriggerButton,
+} from "./ui/dropdown-menu";
 import { ThemeToggle } from "./theme-toggle";
 
 export const langCenNavItems = [
@@ -32,14 +38,16 @@ type LangCenNavProps = {
 
 export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeHref, setActiveHref] = useState<string>(langCenNavItems[0]?.href ?? "");
+  const [activeHref, setActiveHref] = useState<string>(
+    langCenNavItems[0]?.href ?? ""
+  );
   const navId = useId();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const sections = langCenNavItems
-      .map(item => document.getElementById(item.href.slice(1)))
+      .map((item) => document.getElementById(item.href.slice(1)))
       .filter((section): section is HTMLElement => Boolean(section));
 
     if (!sections.length) return;
@@ -108,12 +116,15 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
           <span>eLearning</span>
         </button>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 items-center justify-end gap-2 pr-10">
+        <nav
+          aria-label="Primary navigation"
+          className="hidden md:flex flex-1 items-center justify-end gap-2 pr-4 ml-10"
+        >
           <NavList
             orientation="horizontal"
             activeHref={activeHref}
             onItemClick={handleNavItem}
-            onExerciseNavigate={value => {
+            onExerciseNavigate={(value) => {
               onExerciseNavigate?.(value);
             }}
           />
@@ -128,7 +139,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
             aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
             aria-controls={navId}
-            onClick={() => setIsOpen(prev => !prev)}
+            onClick={() => setIsOpen((prev) => !prev)}
           >
             <Icon src={isOpen ? closeIcon : menuIcon} className="h-5 w-5" />
           </Button>
@@ -140,14 +151,14 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
         aria-label="Primary navigation mobile"
         className={cn(
           "md:hidden border-t border-border/60 bg-background/95 px-6 transition-[max-height] duration-300 ease-out",
-          isOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden",
+          isOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
         )}
       >
         <NavList
           orientation="vertical"
           activeHref={activeHref}
           onItemClick={handleNavItem}
-          onExerciseNavigate={value => {
+          onExerciseNavigate={(value) => {
             onExerciseNavigate?.(value);
           }}
         />
@@ -163,15 +174,21 @@ type NavListProps = {
   onExerciseNavigate?: (value: string) => void;
 };
 
-function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: NavListProps) {
+function NavList({
+  orientation,
+  activeHref,
+  onItemClick,
+  onExerciseNavigate,
+}: NavListProps) {
   return (
     <ul
       className={cn("items-center gap-3 text-[0.5rem]", {
         "flex justify-end": orientation === "horizontal",
-        "flex flex-col items-stretch gap-3 py-2 text-sm": orientation === "vertical",
+        "flex flex-col items-stretch gap-3 py-2 text-sm":
+          orientation === "vertical",
       })}
     >
-      {langCenNavItems.map(item => {
+      {langCenNavItems.map((item) => {
         const isActive = activeHref === item.href;
         const isVertical = orientation === "vertical";
 
@@ -183,7 +200,7 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
                 onClick={() => onItemClick?.(item.href)}
                 className={cn(
                   "nav-link nav-link-horizontal",
-                  isActive ? "nav-link-horizontal-active" : undefined,
+                  isActive ? "nav-link-horizontal-active" : undefined
                 )}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -191,10 +208,14 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
               </a>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <DropdownMenuTriggerButton type="button" aria-label="Exercise shortcuts" className="-ml-2" />
+                  <DropdownMenuTriggerButton
+                    type="button"
+                    aria-label="Exercise shortcuts"
+                    className="-ml-2"
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  {exerciseNavItems.map(entry => (
+                  {exerciseNavItems.map((entry) => (
                     <DropdownMenuItem
                       key={entry.value}
                       onClick={() => {
@@ -222,7 +243,7 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
                   ? isVertical
                     ? "nav-link-vertical-active"
                     : "nav-link-horizontal-active"
-                  : undefined,
+                  : undefined
               )}
               aria-current={isActive ? "page" : undefined}
             >
@@ -230,7 +251,7 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
             </a>
             {item.label === "Exercises" && isVertical && (
               <ul className="mt-2 space-y-1 pl-4 text-xs text-foreground/70">
-                {exerciseNavItems.map(entry => (
+                {exerciseNavItems.map((entry) => (
                   <li key={entry.value}>
                     <button
                       type="button"
