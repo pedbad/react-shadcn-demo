@@ -128,10 +128,10 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
             href={item.href}
             onClick={() => onItemClick?.(item.href)}
             className={cn(
-              "inline-flex items-center border-b-2 border-transparent pb-1 text-foreground/70 transition-colors",
+              "inline-flex items-center border-b-2 border-transparent pb-1 text-foreground/70 transition-all duration-200",
               activeHref === item.href
-                ? "border-primary-foreground text-foreground"
-                : "hover:border-primary-foreground/50 hover:text-foreground",
+                ? "border-b-[5px] border-secondary-foreground text-secondary-foreground"
+                : "hover:border-secondary-foreground/70 hover:text-foreground",
             )}
             aria-current={activeHref === item.href ? "page" : undefined}
           >
