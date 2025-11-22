@@ -87,7 +87,7 @@ export function LangCenNav() {
           <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
         </nav>
 
-        <div className="flex items-center gap-2 md:min-w-[120px] md:justify-end">
+        <div className="flex items-center gap-2 md:min-w-[140px] md:justify-end md:-mr-4">
           <ThemeToggle />
           <Button
             variant="outline"
