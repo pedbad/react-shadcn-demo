@@ -230,7 +230,7 @@
   }
 
   .hero-banner-image {
-    @apply w-full object-cover;
+    @apply w-full object-contain bg-black/5;
     height: clamp(12rem, 40vh, 22rem);
   }
 
