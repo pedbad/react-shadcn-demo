@@ -25,7 +25,7 @@ const AccordionTrigger = React.forwardRef<
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
-      className={cn("accordion-trigger", className)}
+      className={cn("accordion-trigger pl-2 pr-3", className)}
       {...props}
     >
       <ChevronDown className="h-4 w-4 shrink-0" />
