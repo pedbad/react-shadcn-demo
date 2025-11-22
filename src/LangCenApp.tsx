@@ -174,7 +174,7 @@ export function LangCenApp() {
                       ))}
                     </Accordion>
                   )}
-                  <div className="flex justify-end pt-8 -mb-10">
+                  <div className="flex justify-end pt-10 -mb-16">
                     <a href="#language-centre" className="back-to-top" aria-label="Back to top">
                       ↑
                     </a>

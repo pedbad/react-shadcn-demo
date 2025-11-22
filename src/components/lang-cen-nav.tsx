@@ -93,16 +93,20 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
       <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 md:px-6 py-4">
-        <a
-          href="/"
+        <button
+          type="button"
+          onClick={() => {
+            setActiveHref(langCenNavItems[0]?.href ?? "#introduction");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
           className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary -ml-2 md:-ml-4 mr-auto"
-          aria-label="Go to landing page"
+          aria-label="Back to top"
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
             <Icon src={brandIcon} className="h-5 w-5" />
           </span>
           <span>eLearning</span>
-        </a>
+        </button>
 
         <nav aria-label="Primary navigation" className="hidden md:flex items-center justify-end gap-6 pr-4">
           <NavList
