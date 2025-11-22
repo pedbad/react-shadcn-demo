@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
+import elearningMark from "@/assets/elearning-mark.svg";
 
 export const langCenNavItems = [
   { label: "Introduction", href: "#introduction" },
@@ -70,8 +71,13 @@ export function LangCenNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
       <div className="container mx-auto flex items-center justify-between gap-4 px-6 py-4">
-        <a href="/" className="text-lg font-semibold tracking-tight text-primary" aria-label="Go to landing page">
-          eLearning
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary"
+          aria-label="Go to landing page"
+        >
+          <img src={elearningMark} alt="eLearning mark" className="h-8 w-8" />
+          <span>eLearning</span>
         </a>
 
         <nav aria-label="Primary navigation" className="hidden md:flex">
