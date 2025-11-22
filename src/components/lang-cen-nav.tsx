@@ -16,7 +16,37 @@ export const langCenNavItems = [
 
 export function LangCenNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string>(langCenNavItems[0]?.href ?? "");
   const navId = useId();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const sections = langCenNavItems
+      .map(item => document.getElementById(item.href.slice(1)))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible[0]) {
+          setActiveHref(`#${visible[0].target.id}`);
+        }
+      },
+      {
+        rootMargin: "-30% 0px -50% 0px",
+        threshold: [0.25, 0.5, 0.75],
+      },
+    );
+
+    sections.forEach(section => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -32,6 +62,10 @@ export function LangCenNav() {
   }, [isOpen]);
 
   const closeMenu = () => setIsOpen(false);
+  const handleNavItem = (href: string) => {
+    closeMenu();
+    setActiveHref(href);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
@@ -40,8 +74,8 @@ export function LangCenNav() {
           eLearning
         </a>
 
-        <nav aria-label="Primary" className="hidden md:flex">
-          <NavList orientation="horizontal" onNavigate={closeMenu} />
+        <nav aria-label="Primary navigation" className="hidden md:flex">
+          <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
         </nav>
 
         <div className="flex items-center gap-2">
@@ -62,13 +96,13 @@ export function LangCenNav() {
 
       <nav
         id={navId}
-        aria-label="Primary mobile"
+        aria-label="Primary navigation mobile"
         className={cn(
           "md:hidden border-t border-border/60 bg-background/95 px-6 transition-[max-height] duration-300 ease-out",
           isOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden",
         )}
       >
-        <NavList orientation="vertical" onNavigate={closeMenu} />
+        <NavList orientation="vertical" activeHref={activeHref} onItemClick={handleNavItem} />
       </nav>
     </header>
   );
@@ -76,10 +110,11 @@ export function LangCenNav() {
 
 type NavListProps = {
   orientation: "horizontal" | "vertical";
-  onNavigate?: () => void;
+  activeHref: string;
+  onItemClick?: (href: string) => void;
 };
 
-function NavList({ orientation, onNavigate }: NavListProps) {
+function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
   return (
     <ul
       className={cn("items-center gap-6 text-sm font-medium", {
@@ -91,8 +126,14 @@ function NavList({ orientation, onNavigate }: NavListProps) {
         <li key={item.href}>
           <a
             href={item.href}
-            onClick={onNavigate}
-            className="text-foreground/80 transition-colors hover:text-foreground"
+            onClick={() => onItemClick?.(item.href)}
+            className={cn(
+              "inline-flex items-center border-b-2 border-transparent pb-1 text-foreground/70 transition-colors",
+              activeHref === item.href
+                ? "border-primary-foreground text-foreground"
+                : "hover:border-primary-foreground/50 hover:text-foreground",
+            )}
+            aria-current={activeHref === item.href ? "page" : undefined}
           >
             {item.label}
           </a>
