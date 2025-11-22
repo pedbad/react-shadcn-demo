@@ -1,4 +1,4 @@
-import { LangCenNav, langCenNavItems } from "@/components/lang-cen-nav";
+import { LangCenNav, langCenNavItems } from "@/components/lang-cen-nav.tsx";
 import "./index.css";
 
 export function LangCenApp() {
