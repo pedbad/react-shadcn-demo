@@ -117,7 +117,7 @@ type NavListProps = {
 function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
   return (
     <ul
-      className={cn("items-center gap-6 text-xs font-medium tracking-wide uppercase", {
+      className={cn("items-center gap-6 text-[0.55rem] font-medium tracking-[0.2em] uppercase", {
         "flex": orientation === "horizontal",
         "flex-col gap-4 py-2": orientation === "vertical",
       })}
@@ -130,7 +130,7 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
               href={item.href}
               onClick={() => onItemClick?.(item.href)}
               className={cn(
-                "inline-flex items-center pb-1 text-sm transition-all duration-200",
+                "inline-flex items-center pb-1 text-[0.65rem] transition-all duration-200",
                 isActive
                   ? "border-b-[3px] border-solid border-primary text-primary font-semibold"
                   : "border-b border-solid border-transparent text-foreground/70 hover:border-primary hover:text-primary",
