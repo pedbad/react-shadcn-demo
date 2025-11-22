@@ -41,24 +41,20 @@ const DropdownMenuItem = React.forwardRef<
 ));
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
-const DropdownMenuTriggerButton = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<"button"> & {
-    caret?: boolean;
-  }
->(({ className, caret = true, children, ...props }, ref) => (
-  <button
-    ref={ref}
-    className={cn(
-      "inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1 text-[0.72rem] font-medium text-foreground/70 transition-colors hover:text-primary",
-      className,
-    )}
-    {...props}
-  >
-    {children}
-    {caret && <ChevronDown className="h-3.5 w-3.5" />}
-  </button>
-));
+const DropdownMenuTriggerButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
+  ({ className, children, ...props }, ref) => (
+    <button
+      ref={ref}
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1 text-[0.72rem] font-medium text-foreground/70 transition-colors hover:text-primary",
+        className,
+      )}
+      {...props}
+    >
+      {children ?? <ChevronDown className="h-4 w-4" />}
+    </button>
+  ),
+);
 DropdownMenuTriggerButton.displayName = "DropdownMenuTriggerButton";
 
 export { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuTriggerButton };

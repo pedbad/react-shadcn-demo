@@ -184,9 +184,7 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
               </a>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <DropdownMenuTriggerButton type="button" aria-label="More exercises" caret>
-                    …
-                  </DropdownMenuTriggerButton>
+                  <DropdownMenuTriggerButton type="button" aria-label="Exercise shortcuts" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   {exerciseNavItems.map(entry => (
