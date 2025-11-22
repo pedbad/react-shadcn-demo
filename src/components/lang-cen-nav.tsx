@@ -83,7 +83,7 @@ export function LangCenNav() {
           <span>eLearning</span>
         </a>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 justify-center md:pl-16">
+        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 justify-end md:pr-6">
           <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
         </nav>
 
@@ -126,7 +126,7 @@ type NavListProps = {
 function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
   return (
     <ul
-      className={cn("items-center gap-6 text-[0.5rem] font-medium tracking-wide", {
+      className={cn("items-center gap-6 text-[0.6rem] font-normal tracking-wide", {
         "flex": orientation === "horizontal",
         "flex-col gap-4 py-2": orientation === "vertical",
       })}
@@ -139,7 +139,7 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
               href={item.href}
               onClick={() => onItemClick?.(item.href)}
               className={cn(
-                "inline-flex items-center pb-1 text-[0.6rem] transition-all duration-200",
+                "inline-flex items-center pb-1 text-[0.72rem] transition-all duration-200",
                 isActive
                   ? "border-b-[3px] border-solid border-primary text-primary font-semibold"
                   : "border-b border-solid border-transparent text-foreground/70 hover:border-primary hover:text-primary",
