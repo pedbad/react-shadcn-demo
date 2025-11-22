@@ -122,23 +122,29 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
         "flex-col gap-4 py-2": orientation === "vertical",
       })}
     >
-      {langCenNavItems.map(item => (
-        <li key={item.href}>
-          <a
-            href={item.href}
-            onClick={() => onItemClick?.(item.href)}
-            className={cn(
-              "inline-flex items-center border-b-[3px] border-transparent pb-1 text-base text-foreground/70 transition-all duration-200",
-              activeHref === item.href
-                ? "border-b-[5px] border-[color:oklch(0.6_0.12_245)] text-[color:oklch(0.6_0.12_245)] font-semibold"
-                : "hover:border-[color:oklch(0.6_0.12_245_/_0.6)] hover:text-foreground",
-            )}
-            aria-current={activeHref === item.href ? "page" : undefined}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
+      {langCenNavItems.map(item => {
+        const isActive = activeHref === item.href;
+        return (
+          <li key={item.href}>
+            <a
+              href={item.href}
+              onClick={() => onItemClick?.(item.href)}
+              className={cn(
+                "inline-flex items-center border-b-[3px] border-transparent pb-1 text-base text-foreground/70 transition-all duration-200",
+                isActive ? "border-b-[5px] font-semibold" : "hover:text-primary hover:border-primary/60",
+              )}
+              style={
+                isActive
+                  ? { borderBottomColor: "var(--primary)", color: "var(--primary)" }
+                  : undefined
+              }
+              aria-current={isActive ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
     </ul>
   );
 }
