@@ -1,12 +1,57 @@
-import { LangCenNav, langCenNavItems } from "./components/lang-cen-nav";
+import { useCallback, useEffect, useState } from "react";
+
+import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang-cen-nav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import "./index.css";
 
 export function LangCenApp() {
+  const [openExercise, setOpenExercise] = useState<string>(exerciseNavItems[0].value);
+
+  const handleExerciseNavigate = useCallback((value: string) => {
+    setOpenExercise(value);
+    if (typeof document !== "undefined") {
+      document.getElementById(value)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const sections = exerciseNavItems
+      .map(item => document.getElementById(item.value))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (!sections.length) return;
+
+    const updateVisible = () => {
+      const marker = window.scrollY + window.innerHeight * 0.35;
+      let current = sections[0]!.id;
+
+      for (const section of sections) {
+        if (marker >= section.offsetTop) {
+          current = section.id;
+        }
+      }
+
+      setOpenExercise(prev => (prev === current ? prev : current));
+    };
+
+    const handler = () => requestAnimationFrame(updateVisible);
+
+    window.addEventListener("scroll", handler, { passive: true });
+    window.addEventListener("resize", handler);
+    updateVisible();
+
+    return () => {
+      window.removeEventListener("scroll", handler);
+      window.removeEventListener("resize", handler);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[color:oklch(0.96_0.01_240_/_0.9)] text-foreground">
-      <LangCenNav />
+      <LangCenNav onExerciseNavigate={handleExerciseNavigate} />
       <main className="pb-16">
         <div className="w-full">
           <figure>
@@ -95,6 +140,29 @@ export function LangCenApp() {
                       </dl>
                     </TabsContent>
                   </Tabs>
+                )}
+                {slug === "exercises" && (
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="rounded-2xl border border-border/80 bg-background/80"
+                    value={openExercise}
+                    onValueChange={value => {
+                      if (value) {
+                        setOpenExercise(value);
+                      }
+                    }}
+                  >
+                    {exerciseNavItems.map(entry => (
+                      <AccordionItem key={entry.value} value={entry.value} id={entry.value}>
+                        <AccordionTrigger>{entry.label}</AccordionTrigger>
+                        <AccordionContent>
+                          Guided prompt for {entry.label.toLowerCase()}, including context, vocabulary goals, and rubric
+                          references for Cambridge tutors.
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
                 )}
               </section>
             );

@@ -1,10 +1,9 @@
 import { useEffect, useId, useState } from "react";
-import { Menu, X } from "lucide-react";
-
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuTriggerButton } from "./ui/dropdown-menu";
 import { ThemeToggle } from "./theme-toggle";
 
 export const langCenNavItems = [
@@ -16,7 +15,19 @@ export const langCenNavItems = [
   { label: "Exercises", href: "#exercises" },
 ];
 
-export function LangCenNav() {
+export const exerciseNavItems = [
+  { label: "Exercise one", value: "exercise-1" },
+  { label: "Exercise two", value: "exercise-2" },
+  { label: "Exercise three", value: "exercise-3" },
+  { label: "Exercise four", value: "exercise-4" },
+  { label: "Exercise five", value: "exercise-5" },
+];
+
+type LangCenNavProps = {
+  onExerciseNavigate?: (value: string) => void;
+};
+
+export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>(langCenNavItems[0]?.href ?? "");
   const navId = useId();
@@ -91,7 +102,14 @@ export function LangCenNav() {
         </a>
 
         <nav aria-label="Primary navigation" className="hidden md:flex items-center justify-end gap-6 pr-4">
-          <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
+          <NavList
+            orientation="horizontal"
+            activeHref={activeHref}
+            onItemClick={handleNavItem}
+            onExerciseNavigate={value => {
+              onExerciseNavigate?.(value);
+            }}
+          />
         </nav>
 
         <div className="flex items-center gap-2">
@@ -118,7 +136,14 @@ export function LangCenNav() {
           isOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden",
         )}
       >
-        <NavList orientation="vertical" activeHref={activeHref} onItemClick={handleNavItem} />
+        <NavList
+          orientation="vertical"
+          activeHref={activeHref}
+          onItemClick={handleNavItem}
+          onExerciseNavigate={value => {
+            onExerciseNavigate?.(value);
+          }}
+        />
       </nav>
     </header>
   );
@@ -128,9 +153,10 @@ type NavListProps = {
   orientation: "horizontal" | "vertical";
   activeHref: string;
   onItemClick?: (href: string) => void;
+  onExerciseNavigate?: (value: string) => void;
 };
 
-function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
+function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: NavListProps) {
   return (
     <ul
       className={cn("items-center gap-6", {
@@ -141,6 +167,31 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
       {langCenNavItems.map(item => {
         const isActive = activeHref === item.href;
         const isVertical = orientation === "vertical";
+
+        if (item.label === "Exercises" && orientation === "horizontal") {
+          return (
+            <li key="exercises-dropdown">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <DropdownMenuTriggerButton type="button">Exercises</DropdownMenuTriggerButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {exerciseNavItems.map(entry => (
+                    <DropdownMenuItem
+                      key={entry.value}
+                      onClick={() => {
+                        onExerciseNavigate?.(entry.value);
+                      }}
+                    >
+                      {entry.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </li>
+          );
+        }
+
         return (
           <li key={item.href}>
             <a
@@ -159,6 +210,24 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
             >
               {item.label}
             </a>
+            {item.label === "Exercises" && isVertical && (
+              <ul className="mt-2 space-y-1 pl-4 text-xs text-foreground/70">
+                {exerciseNavItems.map(entry => (
+                  <li key={entry.value}>
+                    <button
+                      type="button"
+                      className="text-left transition-colors hover:text-primary"
+                      onClick={() => {
+                        onExerciseNavigate?.(entry.value);
+                        onItemClick?.(item.href);
+                      }}
+                    >
+                      {entry.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         );
       })}
