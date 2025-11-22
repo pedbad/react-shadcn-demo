@@ -100,7 +100,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
-      <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 md:px-6 py-4">
+      <div className="flex w-full items-center gap-4 px-4 md:px-10 py-4">
         <button
           type="button"
           onClick={() => {
