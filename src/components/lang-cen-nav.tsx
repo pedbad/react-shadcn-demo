@@ -71,7 +71,7 @@ export function LangCenNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
-      <div className="container mx-auto flex items-center justify-between gap-4 px-6 py-4">
+      <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
         <a
           href="/"
           className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary"
@@ -83,11 +83,11 @@ export function LangCenNav() {
           <span>eLearning</span>
         </a>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex">
+        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 justify-center">
           <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 md:min-w-[120px] md:justify-end">
           <ThemeToggle />
           <Button
             variant="outline"
