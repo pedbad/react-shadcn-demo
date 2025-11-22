@@ -110,6 +110,8 @@
   --chart-4: oklch(0.55 0.005 240);
   --chart-5: oklch(0.8 0.002 240);
 
+  --section-panel-bg: color-mix(in oklch, var(--background), white 8%);
+
   /* Sidebar */
   --sidebar: var(--background);
   --sidebar-foreground: var(--foreground);
@@ -163,6 +165,8 @@
   --chart-3: oklch(0.85 0.05 245);
   --chart-4: oklch(0.5 0.005 240);
   --chart-5: oklch(0.3 0.002 240);
+
+  --section-panel-bg: color-mix(in oklch, var(--background), black 40%);
 
   /* Sidebar */
   --sidebar: var(--card);
@@ -222,7 +226,8 @@
   }
 
   .section-panel {
-    @apply scroll-mt-32 min-h-[55vh] rounded-3xl bg-primary-foreground/5 px-8 py-12 shadow-lg ring-1 ring-white/10 backdrop-blur;
+    @apply scroll-mt-32 min-h-[55vh] rounded-3xl px-8 py-12 shadow-lg ring-1 ring-white/10 backdrop-blur;
+    background-color: var(--section-panel-bg);
   }
 
   .section-panel-hero {
