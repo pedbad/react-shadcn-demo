@@ -28,7 +28,7 @@ const AccordionTrigger = React.forwardRef<
       className={cn("accordion-trigger pl-2 pr-3", className)}
       {...props}
     >
-      <Icon src={chevronIcon} className="h-4 w-4 shrink-0" />
+      <Icon src={chevronIcon} className="h-4 w-4 shrink-0 accordion-chevron" />
       {children}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
