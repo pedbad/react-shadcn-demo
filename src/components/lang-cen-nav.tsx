@@ -71,10 +71,10 @@ export function LangCenNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 md:px-10 py-4">
+      <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 md:px-6 py-4">
         <a
           href="/"
-          className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary -ml-2 md:-ml-4"
+          className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary -ml-2 md:-ml-4 mr-auto"
           aria-label="Go to landing page"
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -83,11 +83,11 @@ export function LangCenNav() {
           <span>eLearning</span>
         </a>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 justify-end md:pr-12">
+        <nav aria-label="Primary navigation" className="hidden md:flex items-center justify-end gap-6 pr-4">
           <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
         </nav>
 
-        <div className="flex items-center gap-2 md:min-w-[140px] md:justify-end md:-mr-4">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
           <Button
             variant="outline"
@@ -126,7 +126,7 @@ type NavListProps = {
 function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
   return (
     <ul
-      className={cn("items-center gap-8 text-[0.6rem] font-normal tracking-wide", {
+      className={cn("items-center gap-6 text-[0.6rem] font-normal tracking-wide", {
         "flex": orientation === "horizontal",
         "flex-col gap-4 py-2": orientation === "vertical",
       })}
