@@ -32,6 +32,10 @@ body::before {
   display: none;
 }
 
+.langcen-page {
+  background-color: color-mix(in oklch, var(--background), var(--primary) 8%);
+}
+
 @keyframes slide {
   from {
     background-position: 0 0;
