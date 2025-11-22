@@ -71,10 +71,10 @@ export function LangCenNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
-      <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-3 md:px-6 py-4">
         <a
           href="/"
-          className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary"
+          className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary -ml-2 md:-ml-4"
           aria-label="Go to landing page"
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -83,7 +83,7 @@ export function LangCenNav() {
           <span>eLearning</span>
         </a>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 justify-center">
+        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 justify-center md:pl-16">
           <NavList orientation="horizontal" activeHref={activeHref} onItemClick={handleNavItem} />
         </nav>
 
