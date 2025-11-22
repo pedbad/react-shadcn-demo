@@ -68,7 +68,7 @@ export function LangCenNav() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur text-foreground">
       <div className="container mx-auto flex items-center justify-between gap-4 px-6 py-4">
         <a href="/" className="text-lg font-semibold tracking-tight text-primary" aria-label="Go to landing page">
           eLearning
@@ -131,13 +131,10 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
               onClick={() => onItemClick?.(item.href)}
               className={cn(
                 "inline-flex items-center border-b-[3px] border-transparent pb-1 text-base text-foreground/70 transition-all duration-200",
-                isActive ? "border-b-[5px] font-semibold" : "hover:text-primary hover:border-primary/60",
-              )}
-              style={
                 isActive
-                  ? { borderBottomColor: "var(--primary)", color: "var(--primary)" }
-                  : undefined
-              }
+                  ? "border-b-[5px] border-[color:var(--primary)] text-[color:var(--primary)] font-semibold"
+                  : "hover:border-[color:var(--primary)] hover:text-[color:var(--primary)]",
+              )}
               aria-current={isActive ? "page" : undefined}
             >
               {item.label}
