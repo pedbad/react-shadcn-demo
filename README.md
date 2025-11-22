@@ -60,3 +60,7 @@ The default palette now mirrors Cambridge University branding:
 
 - A dedicated page for component experiments lives at `/langcen`. It currently renders demo headings and body copy so designers/devs can preview the Cambridge theme outside the landing card.
 - The Bun server serves `src/langcen.html`, which hydrates `LangCenApp` via `langcen-frontend.tsx`. Add new shadcn components there to grow the showcase gradually.
+
+### Interaction logic
+
+- The Exercises accordions on `/langcen` are controlled by a scroll observer in `LangCenApp`. As you navigate to a subsection via the nav dropdown or scroll, the observer updates the currently visible exercise and opens the corresponding shadcn accordion automatically.
