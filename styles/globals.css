@@ -255,6 +255,7 @@
     position: absolute;
     inset: auto 0 -1px;
     height: 110px;
+    transform: rotate(180deg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     opacity: 0.6;
