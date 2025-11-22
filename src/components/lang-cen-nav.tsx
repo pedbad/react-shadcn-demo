@@ -128,7 +128,7 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
     <ul
       className={cn("items-center gap-6 text-[0.6rem] font-normal tracking-wide", {
         "flex": orientation === "horizontal",
-        "flex-col gap-4 py-2": orientation === "vertical",
+        "flex-col gap-4 border-l border-border/60 py-2 pl-4 text-sm": orientation === "vertical",
       })}
     >
       {langCenNavItems.map(item => {
