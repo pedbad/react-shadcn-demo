@@ -1,10 +1,11 @@
 import { useEffect, useId, useState } from "react";
 import { Menu, X } from "lucide-react";
 
+import { GraduationCap } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
-import elearningMark from "@/assets/elearning-mark.svg";
 
 export const langCenNavItems = [
   { label: "Introduction", href: "#introduction" },
@@ -76,7 +77,9 @@ export function LangCenNav() {
           className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-primary"
           aria-label="Go to landing page"
         >
-          <img src={elearningMark} alt="eLearning mark" className="h-8 w-8" />
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <GraduationCap className="h-5 w-5" />
+          </span>
           <span>eLearning</span>
         </a>
 
