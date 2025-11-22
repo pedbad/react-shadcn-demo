@@ -248,6 +248,14 @@
 .section-panel {
   @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-[100vh] py-28;
   background: linear-gradient(180deg, var(--section-panel-wave) 0%, var(--section-panel-bg) 100%);
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-panel.section-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-panel::before {

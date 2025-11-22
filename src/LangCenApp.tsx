@@ -41,6 +41,9 @@ export function LangCenApp() {
         const visible = entries
           .filter(entry => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        visible.forEach(entry => {
+          entry.target.classList.toggle("section-visible", entry.isIntersecting);
+        });
         if (visible[0]) {
           setActiveSection(visible[0].target.id);
         }
@@ -48,7 +51,9 @@ export function LangCenApp() {
       { threshold: 0.2 },
     );
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach(section => {
+      observer.observe(section);
+    });
     return () => observer.disconnect();
   }, []);
 
