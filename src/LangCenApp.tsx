@@ -5,18 +5,18 @@ export function LangCenApp() {
   return (
     <div className="min-h-screen bg-[color:oklch(0.96_0.01_240_/_0.9)] text-primary-foreground">
       <LangCenNav />
-      <main className="py-16">
-        <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-6">
-          <section className="hero-banner">
-            <figure className="hero-banner-figure">
-              <img
-                src="https://images.unsplash.com/photo-1487611459768-bd414656ea10?auto=format&fit=crop&w=2000&q=80"
-                alt="Cambridge Language Centre banner"
-                className="hero-banner-image"
-                loading="lazy"
-              />
-            </figure>
-          </section>
+      <main className="pb-16">
+        <div className="w-full">
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1487611459768-bd414656ea10?auto=format&fit=crop&w=2600&q=80"
+              alt="Cambridge Language Centre banner"
+              className="hero-banner-image"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+        <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-12">
 
           <section id="language-centre" aria-labelledby="language-centre-heading" className="section-panel section-panel-hero">
             <p className="section-label text-sm">Language Centre</p>

@@ -229,23 +229,8 @@
     @apply flex flex-col justify-center gap-6;
   }
 
-  .hero-banner {
-    @apply relative overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-r from-primary/60 via-primary/20 to-primary/10 px-10 py-16 text-primary-foreground shadow-xl;
-  }
-
-  .hero-banner::after {
-    content: "";
-    @apply pointer-events-none absolute inset-0 opacity-20;
-    background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.4), transparent 55%),
-      radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.25), transparent 50%);
-  }
-
-  .hero-banner-figure {
-    @apply relative;
-  }
-
   .hero-banner-image {
-    @apply h-full w-full rounded-2xl border border-white/30 object-cover shadow-2xl;
+    @apply h-full w-full object-cover;
   }
 
   .section-label {
