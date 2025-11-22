@@ -1,5 +1,6 @@
 import { LangCenNav, langCenNavItems } from "./components/lang-cen-nav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import "./index.css";
 
 export function LangCenApp() {
@@ -64,6 +65,36 @@ export function LangCenApp() {
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
+                )}
+                {slug === "vocabulary" && (
+                  <Tabs defaultValue="semantic" className="mt-6">
+                    <TabsList aria-label="Vocabulary lenses">
+                      <TabsTrigger value="semantic">Semantic</TabsTrigger>
+                      <TabsTrigger value="alphabetic">Alphabetic</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="semantic">
+                      <ul className="space-y-3 text-sm text-foreground/80">
+                        <li>
+                          <strong>Academic register:</strong> inference, synthesis, discourse, epistemic, translational.
+                        </li>
+                        <li>
+                          <strong>Community register:</strong> matriculation, pastoral care, bursary, residence hall.
+                        </li>
+                      </ul>
+                    </TabsContent>
+                    <TabsContent value="alphabetic">
+                      <dl className="grid gap-3 text-sm text-foreground/80 md:grid-cols-2">
+                        <div>
+                          <dt className="font-semibold">A–M</dt>
+                          <dd>Alumni, Bursary, Corpus, Dissertation, Faculty, Matriculation.</dd>
+                        </div>
+                        <div>
+                          <dt className="font-semibold">N–Z</dt>
+                          <dd>Notation, Oration, Practicum, Quadrangle, Refectory, Vivat.</dd>
+                        </div>
+                      </dl>
+                    </TabsContent>
+                  </Tabs>
                 )}
               </section>
             );
