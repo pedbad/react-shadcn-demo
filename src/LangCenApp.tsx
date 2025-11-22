@@ -8,15 +8,26 @@ export function LangCenApp() {
       <main className="py-16">
         <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-6">
           <section className="hero-banner">
-            <div className="relative z-10 space-y-4">
-              <p className="section-label text-sm text-primary-foreground/80">Cambridge Language Centre</p>
-              <h1 className="text-4xl font-semibold leading-tight">
-                Empowering learners through tailored linguistic experiences.
-              </h1>
-              <p className="body-lead max-w-2xl text-primary-foreground/85">
-                Explore immersive dialogues, curated vocabulary, and guided pronunciation drills—all grounded in the
-                Cambridge palette.
-              </p>
+            <div className="hero-banner-grid">
+              <div className="hero-banner-copy">
+                <p className="section-label text-sm text-primary-foreground/80">Cambridge Language Centre</p>
+                <h1 className="text-4xl font-semibold leading-tight">
+                  Empowering learners through tailored linguistic experiences.
+                </h1>
+                <p className="body-lead max-w-2xl text-primary-foreground/85">
+                  Explore immersive dialogues, curated vocabulary, and guided pronunciation drills—all grounded in the
+                  Cambridge palette.
+                </p>
+              </div>
+              <figure className="hero-banner-figure">
+                <img
+                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80"
+                  alt="Learners collaborating at the Language Centre"
+                  className="hero-banner-image"
+                  loading="lazy"
+                />
+                <figcaption className="sr-only">Students collaborating at the Language Centre</figcaption>
+              </figure>
             </div>
           </section>
 

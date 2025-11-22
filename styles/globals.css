@@ -240,6 +240,22 @@
       radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.25), transparent 50%);
   }
 
+  .hero-banner-grid {
+    @apply relative z-10 grid gap-10 md:grid-cols-[1.1fr_0.9fr] lg:grid-cols-2;
+  }
+
+  .hero-banner-copy {
+    @apply space-y-4;
+  }
+
+  .hero-banner-figure {
+    @apply relative;
+  }
+
+  .hero-banner-image {
+    @apply h-full w-full rounded-2xl border border-white/30 object-cover shadow-2xl;
+  }
+
   .section-label {
     @apply text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/70;
   }
