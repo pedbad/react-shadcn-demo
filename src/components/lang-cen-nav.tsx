@@ -108,7 +108,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
           <span>eLearning</span>
         </button>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 items-center justify-end gap-3 pr-8">
+        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 items-center justify-end gap-2 pr-10">
           <NavList
             orientation="horizontal"
             activeHref={activeHref}
@@ -191,7 +191,7 @@ function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: N
               </a>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <DropdownMenuTriggerButton type="button" aria-label="Exercise shortcuts" />
+                  <DropdownMenuTriggerButton type="button" aria-label="Exercise shortcuts" className="-ml-2" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   {exerciseNavItems.map(entry => (
