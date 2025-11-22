@@ -164,6 +164,11 @@ export function LangCenApp() {
                     ))}
                   </Accordion>
                 )}
+                <div className="flex justify-end">
+                  <a href="#language-centre" className="back-to-top" aria-label="Back to top">
+                    ↑
+                  </a>
+                </div>
               </section>
             );
           })}
