@@ -128,21 +128,27 @@ function NavList({ orientation, activeHref, onItemClick }: NavListProps) {
     <ul
       className={cn("items-center gap-6 text-[0.6rem] font-normal tracking-wide", {
         "flex": orientation === "horizontal",
-        "flex-col gap-4 border-l border-border/60 py-2 pl-4 text-sm": orientation === "vertical",
+        "flex flex-col items-stretch gap-3 py-2 text-sm": orientation === "vertical",
       })}
     >
       {langCenNavItems.map(item => {
         const isActive = activeHref === item.href;
+        const isVertical = orientation === "vertical";
         return (
           <li key={item.href}>
             <a
               href={item.href}
               onClick={() => onItemClick?.(item.href)}
               className={cn(
-                "inline-flex items-center pb-1 text-[0.72rem] transition-all duration-200",
+                "border-solid text-[0.72rem] transition-all duration-200",
+                isVertical ? "flex w-full items-center border-l pl-3" : "inline-flex items-center border-b pb-1",
                 isActive
-                  ? "border-b-[3px] border-solid border-primary text-primary font-semibold"
-                  : "border-b border-solid border-transparent text-foreground/70 hover:border-primary hover:text-primary",
+                  ? isVertical
+                    ? "border-l-4 border-primary text-primary font-semibold"
+                    : "border-b-[3px] border-primary text-primary font-semibold"
+                  : isVertical
+                    ? "border-l border-transparent text-foreground/80 hover:border-primary/60 hover:text-primary"
+                    : "border-b border-transparent text-foreground/70 hover:border-primary hover:text-primary",
               )}
               aria-current={isActive ? "page" : undefined}
             >
