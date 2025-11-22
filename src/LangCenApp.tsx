@@ -7,6 +7,19 @@ export function LangCenApp() {
       <LangCenNav />
       <main className="py-16">
         <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-6">
+          <section className="hero-banner">
+            <div className="relative z-10 space-y-4">
+              <p className="section-label text-sm text-primary-foreground/80">Cambridge Language Centre</p>
+              <h1 className="text-4xl font-semibold leading-tight">
+                Empowering learners through tailored linguistic experiences.
+              </h1>
+              <p className="body-lead max-w-2xl text-primary-foreground/85">
+                Explore immersive dialogues, curated vocabulary, and guided pronunciation drills—all grounded in the
+                Cambridge palette.
+              </p>
+            </div>
+          </section>
+
           <section id="language-centre" aria-labelledby="language-centre-heading" className="section-panel section-panel-hero">
             <p className="section-label text-sm">Language Centre</p>
             <h1 id="language-centre-heading" className="heading-hero">

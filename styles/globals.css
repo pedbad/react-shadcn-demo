@@ -229,6 +229,17 @@
     @apply flex flex-col justify-center gap-6;
   }
 
+  .hero-banner {
+    @apply relative overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-r from-[color-mix(in_oklch,var(--primary) 35%,white)] via-[color-mix(in_oklch,var(--primary) 15%,white)] to-[color-mix(in_oklch,var(--primary) 10%,white)] px-10 py-16 text-primary-foreground shadow-xl;
+  }
+
+  .hero-banner::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 opacity-20;
+    background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.4), transparent 55%),
+      radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.25), transparent 50%);
+  }
+
   .section-label {
     @apply text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/70;
   }

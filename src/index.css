@@ -33,7 +33,7 @@ body::before {
 }
 
 .langcen-page {
-  background-color: color-mix(in oklch, var(--background), var(--primary) 8%);
+  background-color: color-mix(in oklch, var(--background), var(--primary) 12%);
 }
 
 @keyframes slide {
