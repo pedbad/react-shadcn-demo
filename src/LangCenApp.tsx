@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang-cen-nav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
@@ -11,42 +11,10 @@ export function LangCenApp() {
   const handleExerciseNavigate = useCallback((value: string) => {
     setOpenExercise(value);
     if (typeof document !== "undefined") {
-      document.getElementById(value)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      requestAnimationFrame(() => {
+        document.getElementById(value)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const sections = exerciseNavItems
-      .map(item => document.getElementById(item.value))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (!sections.length) return;
-
-    const updateVisible = () => {
-      const marker = window.scrollY + window.innerHeight * 0.35;
-      let current = sections[0]!.id;
-
-      for (const section of sections) {
-        if (marker >= section.offsetTop) {
-          current = section.id;
-        }
-      }
-
-      setOpenExercise(prev => (prev === current ? prev : current));
-    };
-
-    const handler = () => requestAnimationFrame(updateVisible);
-
-    window.addEventListener("scroll", handler, { passive: true });
-    window.addEventListener("resize", handler);
-    updateVisible();
-
-    return () => {
-      window.removeEventListener("scroll", handler);
-      window.removeEventListener("resize", handler);
-    };
   }, []);
 
   return (
