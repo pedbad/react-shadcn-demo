@@ -108,7 +108,7 @@ export function LangCenNav({ onExerciseNavigate }: LangCenNavProps) {
           <span>eLearning</span>
         </button>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 items-center justify-end gap-4 pr-6">
+        <nav aria-label="Primary navigation" className="hidden md:flex flex-1 items-center justify-end gap-3 pr-8">
           <NavList
             orientation="horizontal"
             activeHref={activeHref}
@@ -166,7 +166,7 @@ type NavListProps = {
 function NavList({ orientation, activeHref, onItemClick, onExerciseNavigate }: NavListProps) {
   return (
     <ul
-      className={cn("items-center gap-4 text-[0.55rem]", {
+      className={cn("items-center gap-3 text-[0.5rem]", {
         "flex justify-end": orientation === "horizontal",
         "flex flex-col items-stretch gap-3 py-2 text-sm": orientation === "vertical",
       })}

@@ -323,11 +323,11 @@
   }
 
   .nav-link {
-    @apply border-solid text-[0.6rem] font-normal tracking-[0.15em] text-foreground/65 transition-all duration-200 hover:text-primary;
+    @apply border-solid text-[0.5rem] font-medium tracking-[0.2em] text-foreground/60 uppercase transition-all duration-200 hover:text-primary;
   }
 
   .nav-link-horizontal {
-    @apply inline-flex items-center border-b border-transparent pb-1;
+    @apply inline-flex items-center border-b border-transparent pb-0.5;
   }
 
   .nav-link-horizontal-active {
