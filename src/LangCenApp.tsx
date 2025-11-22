@@ -3,7 +3,7 @@ import "./index.css";
 
 export function LangCenApp() {
   return (
-    <div className="min-h-screen bg-[color:oklch(0.96_0.01_240_/_0.9)] text-primary-foreground">
+    <div className="min-h-screen bg-[color:oklch(0.96_0.01_240_/_0.9)] text-foreground">
       <LangCenNav />
       <main className="pb-16">
         <div className="w-full">
