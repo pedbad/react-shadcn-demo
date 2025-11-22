@@ -12,7 +12,11 @@ export function LangCenApp() {
     setOpenExercise(value);
     if (typeof document !== "undefined") {
       requestAnimationFrame(() => {
-        document.getElementById(value)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const target = document.getElementById(value);
+        if (!target) return;
+        const navHeight = document.querySelector("header")?.clientHeight ?? 80;
+        const offsetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
       });
     }
   }, []);
