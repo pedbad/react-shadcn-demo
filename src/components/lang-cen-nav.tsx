@@ -28,26 +28,33 @@ export function LangCenNav() {
       .map(item => document.getElementById(item.href.slice(1)))
       .filter((section): section is HTMLElement => Boolean(section));
 
-    if (sections.length === 0) return;
+    if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
-      entries => {
-        const visible = entries
-          .filter(entry => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+      let current = sections[0]!;
 
-        if (visible[0]) {
-          setActiveHref(`#${visible[0].target.id}`);
+      for (const section of sections) {
+        if (scrollPosition >= section.offsetTop) {
+          current = section;
         }
-      },
-      {
-        rootMargin: "-30% 0px -50% 0px",
-        threshold: [0.25, 0.5, 0.75],
-      },
-    );
+      }
 
-    sections.forEach(section => observer.observe(section));
-    return () => observer.disconnect();
+      setActiveHref(`#${current.id}`);
+    };
+
+    const handleScroll = () => {
+      requestAnimationFrame(updateActiveSection);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    updateActiveSection();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
