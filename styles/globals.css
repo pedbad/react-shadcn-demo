@@ -246,7 +246,7 @@
   }
 
   .section-panel {
-    @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-[75vh] py-20;
+    @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-[85vh] py-24;
     background: linear-gradient(180deg, var(--section-panel-bg) 0%, color-mix(in oklch, var(--section-panel-bg), var(--primary) 8%) 100%);
   }
 
