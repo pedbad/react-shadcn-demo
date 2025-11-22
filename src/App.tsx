@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { APITester } from "./APITester";
 import "./index.css";
 
@@ -31,6 +32,11 @@ export function App() {
         <CardContent>
           <APITester />
         </CardContent>
+        <CardFooter className="justify-center">
+          <Button asChild>
+            <a href="/langcen">Visit the Language Centre demo</a>
+          </Button>
+        </CardFooter>
       </Card>
     </div>
   );

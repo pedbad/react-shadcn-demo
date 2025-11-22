@@ -55,3 +55,8 @@ The default palette now mirrors Cambridge University branding:
 - The project now loads the [Inter](https://rsms.me/inter/) family from Google Fonts (see the `<head>` of `src/index.html`) and registers it as the default `font-sans` stack.
 - Tailwind utilities like `font-sans` automatically resolve to Inter because `styles/globals.css` defines `--font-sans` inside the inline theme.
 - Override or extend typography by editing the same `--font-sans` token or layering additional `@font-face` rules for headings/body text as needed.
+
+### Language Centre demo
+
+- A dedicated page for component experiments lives at `/langcen`. It currently renders demo headings and body copy so designers/devs can preview the Cambridge theme outside the landing card.
+- The Bun server serves `src/langcen.html`, which hydrates `LangCenApp` via `langcen-frontend.tsx`. Add new shadcn components there to grow the showcase gradually.
