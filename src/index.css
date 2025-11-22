@@ -24,6 +24,10 @@ body::before {
   pointer-events: none;
 }
 
+.langcen-page::before {
+  display: none;
+}
+
 @keyframes slide {
   from {
     background-position: 0 0;

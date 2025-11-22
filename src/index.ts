@@ -5,7 +5,8 @@ import langcen from "./langcen.html";
 const server = serve({
   routes: {
     // Serve index.html for all unmatched routes.
-    "/langcen*": langcen,
+    "/langcen": langcen,
+    "/langcen/*": langcen,
     "/*": index,
 
     "/api/hello": {
