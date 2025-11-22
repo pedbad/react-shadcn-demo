@@ -1,4 +1,5 @@
 import { LangCenNav, langCenNavItems } from "./components/lang-cen-nav";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import "./index.css";
 
 export function LangCenApp() {
@@ -42,6 +43,28 @@ export function LangCenApp() {
                   urna viverra at. Nulla facilisi. Pellentesque in lorem varius, tempor nunc vel, viverra tellus. Duis
                   pharetra ligula lectus, non laoreet sapien cursus ut.
                 </p>
+                {slug === "dialogues" && (
+                  <Accordion type="single" collapsible className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
+                    <AccordionItem value="dialogue-1">
+                      <AccordionTrigger>Academic mentoring scenario</AccordionTrigger>
+                      <AccordionContent>
+                        Sample script highlighting student and coach dialogue, infused with Cambridge tone and vocabulary.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="dialogue-2">
+                      <AccordionTrigger>International admissions support</AccordionTrigger>
+                      <AccordionContent>
+                        Demonstrates conversational blocks used for visa, housing, and onboarding queries.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="dialogue-3">
+                      <AccordionTrigger>Research collaboration workshops</AccordionTrigger>
+                      <AccordionContent>
+                        Outlines call-and-response exercises that reinforce technical terminology and pronunciation.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                )}
               </section>
             );
           })}
