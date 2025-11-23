@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
 import infoIcon from "./icons/info.svg";
+import externalLinkIcon from "./icons/external-link.svg";
 import "./index.css";
 
 export function LangCenApp() {
@@ -89,7 +90,7 @@ export function LangCenApp() {
                   This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
                 </p>
               </div>
-              <RadioGroup className="mt-4 flex flex-wrap gap-4 text-sm text-foreground/80">
+              <RadioGroup className="mt-6 grid gap-4 text-base text-foreground/80">
                 {[
                   { label: "Bun v1.3.1", href: "https://bun.sh" },
                   { label: "React v19.0.0", href: "https://react.dev" },
@@ -98,9 +99,10 @@ export function LangCenApp() {
                   { label: "Inter font", href: "https://rsms.me/inter" },
                   { label: "Lucide icons", href: "https://lucide.dev" },
                 ].map(item => (
-                  <label key={item.label} className="flex cursor-pointer items-center gap-2 rounded-full border border-border/60 px-4 py-2 shadow-sm transition hover:border-primary/60">
-                    <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary" />
-                    <span className="text-left">{item.label}</span>
+                  <label key={item.label} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60">
+                    <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary h-6 w-6" />
+                    <span className="text-left flex-1">{item.label}</span>
+                    <Icon src={externalLinkIcon} className="h-4 w-4 text-primary" />
                   </label>
                 ))}
               </RadioGroup>
