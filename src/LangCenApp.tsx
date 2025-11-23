@@ -80,10 +80,10 @@ export function LangCenApp() {
               <h1 id="language-centre-heading" className="heading-hero">
                 The quick brown fox jumps over the lazy dog.
               </h1>
-              <p className="body-lead">
-                Sphinx of black quartz, judge my vow. This hero spans the Linguistics program vision so we can evaluate
-                typography, whitespace, and the Cambridge palette before layering interactive components.
-              </p>
+            <p className="body-lead">
+              This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, and shadcn/ui components. It showcases the full
+              stack we use to prototype Cambridge-inspired interfaces.
+            </p>
             </div>
           </section>
 
