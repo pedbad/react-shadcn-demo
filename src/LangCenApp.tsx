@@ -326,7 +326,7 @@ export function LangCenApp() {
                           Semantic
                         </TabsTrigger>
                         <TabsTrigger value="alphabetic">
-                          <Icon src={typeIcon} className="mr-2 h-4 w-4" />
+                          <Icon src={arrowDownAz} className="mr-2 h-4 w-4" />
                           Alphabetic
                         </TabsTrigger>
                       </TabsList>
