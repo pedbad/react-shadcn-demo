@@ -10,12 +10,18 @@ import "./index.css";
 export function App() {
   return (
     <div className="w-full px-6 py-8 text-center relative z-10 space-y-10">
-      <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-        {[{ src: bunLogo, label: "Bun" }, { src: reactLogo, label: "React" }, { src: tailwindLogo, label: "Tailwind" }, { src: shadcnLogo, label: "shadcn/ui" }].map(logo => (
-          <div key={logo.label} className="flex flex-col items-center gap-2">
-            <img src={logo.src} alt={`${logo.label} logo`} className="h-16 w-16" />
+      <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
+        {[{ src: bunLogo, label: "Bun", href: "https://bun.sh" }, { src: reactLogo, label: "React", href: "https://react.dev" }, { src: tailwindLogo, label: "Tailwind", href: "https://tailwindcss.com" }, { src: shadcnLogo, label: "shadcn/ui", href: "https://ui.shadcn.com" }].map(logo => (
+          <a key={logo.label} href={logo.href} target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-3">
+            <span className="relative inline-flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 transition duration-300 group-hover:from-primary/40 group-hover:to-primary/30 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]">
+              <img
+                src={logo.src}
+                alt={`${logo.label} logo`}
+                className="h-24 w-24 transition duration-500 group-hover:rotate-[360deg]"
+              />
+            </span>
             <span className="text-xs uppercase tracking-[0.2em] text-foreground/70">{logo.label}</span>
-          </div>
+          </a>
         ))}
       </div>
       <Card>
