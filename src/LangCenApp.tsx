@@ -183,14 +183,14 @@ export function LangCenApp() {
                     ))}
                     </Accordion>
                   )}
-                  {slug === "language-centre" ? null : (
-                    <div className="pointer-events-none absolute -bottom-8 right-6">
-                      <a href="#language-centre" className="back-to-top pointer-events-auto" aria-label="Back to top">
-                        ↑
-                      </a>
-                    </div>
-                  )}
                 </div>
+                {slug === "language-centre" ? null : (
+                  <div className="pointer-events-none absolute bottom-4 right-4">
+                    <a href="#language-centre" className="back-to-top pointer-events-auto" aria-label="Back to top">
+                      ↑
+                    </a>
+                  </div>
+                )}
               </section>
             );
           })}
