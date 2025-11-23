@@ -82,7 +82,7 @@ export function LangCenApp() {
               </h1>
             <p className="body-lead">
               This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and
-              Cambridge-inspired SVG icons to showcase our full prototyping stack.
+              custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
             </p>
             </div>
           </section>
