@@ -105,20 +105,20 @@ export function LangCenApp() {
                     <Accordion type="multiple" className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
                     <AccordionItem value="dialogue-1">
                       <AccordionTrigger>Dialogue one</AccordionTrigger>
-                      <AccordionContent>
-                        Sample script highlighting student and coach dialogue, infused with Cambridge tone and vocabulary.
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="dialogue-2">
-                      <AccordionTrigger>Dialogue two</AccordionTrigger>
-                      <AccordionContent>
-                        Demonstrates conversational blocks used for visa, housing, and onboarding queries.
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="dialogue-3">
-                      <AccordionTrigger>Dialogue three</AccordionTrigger>
-                      <AccordionContent>
-                        Outlines call-and-response exercises that reinforce technical terminology and pronunciation.
+                        <AccordionContent>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="dialogue-2">
+                        <AccordionTrigger>Dialogue two</AccordionTrigger>
+                        <AccordionContent>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="dialogue-3">
+                        <AccordionTrigger>Dialogue three</AccordionTrigger>
+                        <AccordionContent>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
@@ -172,11 +172,10 @@ export function LangCenApp() {
                         <AccordionItem key={entry.value} value={entry.value} id={entry.value}>
                           <AccordionTrigger>{entry.label}</AccordionTrigger>
                           <AccordionContent>
-                            Guided prompt for {entry.label.toLowerCase()}, including context, vocabulary goals, and rubric
-                            references for Cambridge tutors.
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
                     </Accordion>
                   )}
                   <div className="flex justify-end pt-10 -mb-16">
