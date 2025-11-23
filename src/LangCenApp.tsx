@@ -291,11 +291,37 @@ export function LangCenApp() {
                   <h2 id={`${slug}-heading`} className="heading-section">
                     The quick brown fox jumps over the lazy dog.
                   </h2>
-                  <p className="body-copy">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus egestas elementum erat, sed vehicula
-                    urna viverra at. Nulla facilisi. Pellentesque in lorem varius, tempor nunc vel, viverra tellus. Duis
-                    pharetra ligula lectus, non laoreet sapien cursus ut.
-                  </p>
+                <p className="body-copy">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus egestas elementum erat, sed vehicula
+                  urna viverra at. Nulla facilisi. Pellentesque in lorem varius, tempor nunc vel, viverra tellus. Duis
+                  pharetra ligula lectus, non laoreet sapien cursus ut.
+                </p>
+                {slug === "introduction" && (
+                  <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/80 p-6 md:grid-cols-2">
+                    <div className="space-y-4 text-sm text-foreground/80">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet sem vitae erat luctus,
+                        sed tristique nibh fermentum.
+                      </p>
+                      <ol className="list-decimal space-y-2 pl-5">
+                        <li>Curabitur vulputate sem ac efficitur posuere.</li>
+                        <li>Vivamus vehicula urna sed lectus laoreet.</li>
+                        <li>Proin non tellus sed est placerat convallis.</li>
+                        <li>Mauris posuere elit vitae interdum auctor.</li>
+                      </ol>
+                      <div className="h-px w-full bg-border/60" />
+                      <ul className="list-disc space-y-2 pl-5">
+                        <li>Nulla facilisi congue eget nunc.</li>
+                        <li>Fusce at massa at eros ullamcorper.</li>
+                        <li>Sed tincidunt magna ac faucibus blandit.</li>
+                        <li>Aliquam erat volutpat erat sed odio.</li>
+                      </ul>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <img src="/src/logo.svg" alt="Bun logo" className="max-h-64 w-auto object-contain" />
+                    </div>
+                  </div>
+                )}
                   {slug === "dialogues" && (
                     <Accordion type="multiple" className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
                     <AccordionItem value="dialogue-1">
