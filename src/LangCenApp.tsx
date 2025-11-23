@@ -163,17 +163,6 @@ export function LangCenApp() {
                     This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
                   </p>
                 </div>
-                <div className="flex items-center justify-between gap-4 rounded-2xl border border-border/60 bg-background/80 p-4 shadow-sm">
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/60">Button preview</p>
-                    <p className="text-xs text-foreground/60">Toggle to view light or dark button styles</p>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm font-medium">
-                    Light
-                    <Switch checked={darkPreview} onCheckedChange={setDarkPreview} />
-                    Dark
-                  </div>
-                </div>
                 <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
                   <RadioGroup className="grid gap-4 text-base text-foreground/80">
                     {[
@@ -212,7 +201,18 @@ export function LangCenApp() {
                     </div>
                   </div>
                 </div>
-                <div className={cn("rounded-2xl border border-border/60 p-4 shadow-sm", darkPreview && "dark bg-[#1a1a1a] text-white")}>
+                <div className="flex items-center justify-between gap-4 rounded-2xl border border-border/60 bg-background/80 p-4 shadow-sm">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/60">Button preview</p>
+                    <p className="text-xs text-foreground/60">Toggle to view light or dark button styles</p>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm font-medium">
+                    Light
+                    <Switch checked={darkPreview} onCheckedChange={setDarkPreview} />
+                    Dark
+                  </div>
+                </div>
+                <div className={cn("rounded-2xl border border-border/60 p-4 shadow-sm", darkPreview && "dark bg-[#1a1a1a] text-white")}> 
                   <div className="grid gap-4 text-sm md:grid-cols-3">
                     {["primary", "secondary", "tertiary"].map(variant => (
                       <div key={variant} className="space-y-2">
