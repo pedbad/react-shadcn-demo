@@ -36,9 +36,12 @@ export function App() {
         <CardContent>
           <APITester />
         </CardContent>
-        <CardFooter className="justify-center">
+        <CardFooter className="flex flex-wrap items-center justify-center gap-3">
           <Button asChild>
             <a href="/langcen">Visit the Language Centre demo</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="/landing">Explore the landing grid</a>
           </Button>
         </CardFooter>
       </Card>

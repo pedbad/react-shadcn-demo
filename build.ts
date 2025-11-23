@@ -108,7 +108,8 @@ const formatFileSize = (bytes: number): string => {
 console.log("\n🚀 Starting build process...\n");
 
 const cliConfig = parseArgs();
-const outdir = cliConfig.outdir || path.join(process.cwd(), "dist");
+const { naming, outdir: cliOutdir, ...cliOverrides } = cliConfig;
+const outdir = cliOutdir || path.join(process.cwd(), "dist");
 
 if (existsSync(outdir)) {
   console.log(`🗑️ Cleaning previous build at ${outdir}`);
@@ -122,6 +123,14 @@ const entrypoints = [...new Bun.Glob("**.html").scanSync("src")]
   .filter(dir => !dir.includes("node_modules"));
 console.log(`📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`);
 
+const resolvedNaming =
+  naming ??
+  {
+    entry: "[dir]/[name]-[hash].[ext]",
+    chunk: "chunks/[name]-[hash].[ext]",
+    asset: "assets/[name]-[hash].[ext]",
+  };
+
 const result = await Bun.build({
   entrypoints,
   outdir,
@@ -129,10 +138,11 @@ const result = await Bun.build({
   minify: true,
   target: "browser",
   sourcemap: "linked",
+  naming: resolvedNaming,
   define: {
     "process.env.NODE_ENV": JSON.stringify("production"),
   },
-  ...cliConfig,
+  ...cliOverrides,
 });
 
 const end = performance.now();

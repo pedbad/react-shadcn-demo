@@ -61,6 +61,8 @@ The default palette now mirrors Cambridge University branding:
 - A dedicated page for component experiments lives at `/langcen`. It currently renders demo headings and body copy so designers/devs can preview the Cambridge theme outside the landing card.
 - The Bun server serves `src/langcen.html`, which hydrates `LangCenApp` via `langcen-frontend.tsx`. Add new shadcn components there to grow the showcase gradually.
 
+- The `/landing` route now hydrates `LandingApp` via `landing.html`/`landing-frontend.tsx`, giving the team a sticky-sidebar dashboard with 15 “Learning Object” cards (image, blurb, CTA). This is the page designers can use to vet grid spacing, content density, and navigation behavior separate from the Language Centre experience.
+
 ### Interaction logic
 
 - The Exercises accordions on `/langcen` are controlled by a scroll observer in `LangCenApp`. As you navigate to a subsection via the nav dropdown or scroll, the observer updates the currently visible exercise and opens the corresponding shadcn accordion automatically.

@@ -1,10 +1,13 @@
 import { serve } from "bun";
 import index from "./index.html";
 import langcen from "./langcen.html";
+import landing from "./landing.html";
 
 const server = serve({
   routes: {
     // Serve index.html for all unmatched routes.
+    "/landing": landing,
+    "/landing/*": landing,
     "/langcen": langcen,
     "/langcen/*": langcen,
     "/*": index,

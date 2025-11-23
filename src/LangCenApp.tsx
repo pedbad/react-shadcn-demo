@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
 import { cn } from "./lib/utils";
 
 import layersIcon from "./icons/layers.svg";
@@ -15,6 +15,20 @@ import infoIcon from "./icons/info.svg";
 import externalLinkIcon from "./icons/external-link.svg";
 import arrowDownAz from "./icons/arrow-down-az.svg";
 import arrowUpAz from "./icons/arrow-up-az.svg";
+import eyeIcon from "./icons/eye.svg";
+import eyeOffIcon from "./icons/eye-off.svg";
+import menuIcon from "./icons/menu.svg";
+import closeIcon from "./icons/close.svg";
+import moonIcon from "./icons/moon.svg";
+import sunIcon from "./icons/sun.svg";
+import checkIcon from "./icons/check.svg";
+import chevronDownIcon from "./icons/chevron-down.svg";
+import chevronUpIcon from "./icons/chevron-up.svg";
+import tailwindIcon from "./icons/tailwind.svg";
+import shadcnIcon from "./icons/shadcn.svg";
+import panelLeftIcon from "./icons/panel-left.svg";
+import lucideElearningIcon from "./icons/lucide-elearning.svg";
+import graduationIcon from "./icons/graduation.svg";
 import bunLogo from "./logo.svg";
 import "./index.css";
 
@@ -86,6 +100,43 @@ const darkPalette = [
   { label: "sidebar-ring", color: "oklch(0.7 0.12 245)", text: "oklch(0.145 0 0)" },
 ];
 
+const stackResources = [
+  { value: "bun", label: "Bun v1.3.1", href: "https://bun.sh" },
+  { value: "react", label: "React v19.0.0", href: "https://react.dev" },
+  { value: "tailwind", label: "Tailwind CSS v4", href: "https://tailwindcss.com" },
+  { value: "shadcn", label: "shadcn/ui", href: "https://ui.shadcn.com" },
+  { value: "inter", label: "Inter font", href: "https://rsms.me/inter" },
+  { value: "lucide", label: "Lucide icons", href: "https://lucide.dev" },
+];
+
+const themeResources = [
+  { value: "shadcn-themes", label: "shadcn theme gallery", href: "https://ui.shadcn.com/themes" },
+  { value: "tweakcn", label: "tweakcn playground", href: "https://tweakcn.com/#examples" },
+];
+
+const introductionIconShowcase = [
+  { src: layersIcon, label: "Layers" },
+  { src: typeIcon, label: "Typography" },
+  { src: infoIcon, label: "Info" },
+  { src: externalLinkIcon, label: "External link" },
+  { src: arrowDownAz, label: "A to Z" },
+  { src: arrowUpAz, label: "Z to A" },
+  { src: eyeIcon, label: "Eye open" },
+  { src: eyeOffIcon, label: "Eye closed" },
+  { src: menuIcon, label: "Menu" },
+  { src: closeIcon, label: "Close" },
+  { src: moonIcon, label: "Moon" },
+  { src: sunIcon, label: "Sun" },
+  { src: checkIcon, label: "Check" },
+  { src: chevronDownIcon, label: "Chevron down" },
+  { src: chevronUpIcon, label: "Chevron up" },
+  { src: tailwindIcon, label: "Tailwind" },
+  { src: shadcnIcon, label: "shadcn/ui" },
+  { src: panelLeftIcon, label: "Panel" },
+  { src: lucideElearningIcon, label: "eLearning icon" },
+  { src: graduationIcon, label: "Graduation" },
+];
+
 const lightThemeVars: CSSProperties = {
   "--background": "oklch(0.98 0.005 85)",
   "--foreground": "oklch(0.12 0.005 240)",
@@ -133,6 +184,12 @@ export function LangCenApp() {
   const [activeSection, setActiveSection] = useState<string>("language-centre");
   const [darkPreview, setDarkPreview] = useState(false);
   const [alphabeticAscending, setAlphabeticAscending] = useState(true);
+  const resourceMap = useMemo(() => {
+    return [...stackResources, ...themeResources].reduce<Record<string, string>>((acc, entry) => {
+      acc[entry.value] = entry.href;
+      return acc;
+    }, {});
+  }, []);
 
   const handleExerciseNavigate = useCallback((value: string) => {
     setOpenExercises(prev => (prev.includes(value) ? prev : [...prev, value]));
@@ -146,6 +203,13 @@ export function LangCenApp() {
       });
     }
   }, []);
+
+  const handleResourceSelect = useCallback((value: string) => {
+    const url = resourceMap[value];
+    if (url && typeof window !== "undefined") {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, [resourceMap]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -210,18 +274,29 @@ export function LangCenApp() {
                   </p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
-                  <RadioGroup className="grid gap-4 text-base text-foreground/80">
-                    {[
-                      { label: "Bun v1.3.1", href: "https://bun.sh" },
-                      { label: "React v19.0.0", href: "https://react.dev" },
-                      { label: "Tailwind CSS v4", href: "https://tailwindcss.com" },
-                      { label: "shadcn/ui", href: "https://ui.shadcn.com" },
-                      { label: "Inter font", href: "https://rsms.me/inter" },
-                      { label: "Lucide icons", href: "https://lucide.dev" },
-                    ].map(item => (
-                      <label key={item.label} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60">
-                      <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary h-6 w-6" />
+                  <RadioGroup
+                    className="grid gap-4 text-base text-foreground/80"
+                    defaultValue={stackResources[0]?.value}
+                    onValueChange={handleResourceSelect}
+                  >
+                    {stackResources.map(item => (
+                      <label
+                        key={item.value}
+                        className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60"
+                      >
+                        <RadioGroupItem value={item.value} className="data-[state=checked]:border-primary h-6 w-6" />
                         <span className="text-left flex-1">{item.label}</span>
+                        <Icon src={externalLinkIcon} className="h-4 w-4 text-primary" />
+                      </label>
+                    ))}
+                    <div className="h-px bg-border/60" role="presentation" />
+                    {themeResources.map(item => (
+                      <label
+                        key={item.value}
+                        className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60"
+                      >
+                        <RadioGroupItem value={item.value} className="data-[state=checked]:border-primary h-6 w-6" />
+                        <span className="flex-1 text-left">{item.label}</span>
                         <Icon src={externalLinkIcon} className="h-4 w-4 text-primary" />
                       </label>
                     ))}
@@ -298,59 +373,139 @@ export function LangCenApp() {
                   pharetra ligula lectus, non laoreet sapien cursus ut.
                 </p>
                 {slug === "introduction" && (
-                  <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/80 p-6 md:grid-cols-2">
-                    <div className="space-y-4 text-sm text-foreground/80">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet sem vitae erat luctus,
-                        sed tristique nibh fermentum.
-                      </p>
-                      <ol className="list-decimal space-y-2 pl-5">
-                        <li>Curabitur vulputate sem ac efficitur posuere.</li>
-                        <li>Vivamus vehicula urna sed lectus laoreet.</li>
-                        <li>Proin non tellus sed est placerat convallis.</li>
-                        <li>Mauris posuere elit vitae interdum auctor.</li>
-                      </ol>
-                      <div className="h-px w-full bg-border/60" />
-                      <ul className="list-disc space-y-2 pl-5">
-                        <li>Nulla facilisi congue eget nunc.</li>
-                        <li>Fusce at massa at eros ullamcorper.</li>
-                        <li>Sed tincidunt magna ac faucibus blandit.</li>
-                        <li>Aliquam erat volutpat erat sed odio.</li>
-                      </ul>
+                  <div className="space-y-6">
+                    <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/80 p-6 md:grid-cols-2">
+                      <div className="space-y-4 text-sm text-foreground/80">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet sem vitae erat luctus,
+                          sed tristique nibh fermentum.
+                        </p>
+                        <ol className="list-decimal space-y-2 pl-5">
+                          <li>Curabitur vulputate sem ac efficitur posuere.</li>
+                          <li>Vivamus vehicula urna sed lectus laoreet.</li>
+                          <li>Proin non tellus sed est placerat convallis.</li>
+                          <li>Mauris posuere elit vitae interdum auctor.</li>
+                        </ol>
+                        <div className="h-px w-full bg-border/60" />
+                        <ul className="list-disc space-y-2 pl-5">
+                          <li>Nulla facilisi congue eget nunc.</li>
+                          <li>Fusce at massa at eros ullamcorper.</li>
+                          <li>Sed tincidunt magna ac faucibus blandit.</li>
+                          <li>Aliquam erat volutpat erat sed odio.</li>
+                        </ul>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <div className="group relative inline-flex h-full w-full items-center justify-center rounded-3xl bg-background/90">
+                          <span className="absolute inset-4 rounded-full bg-gradient-to-r from-primary/30 via-white/5 to-primary/30 opacity-0 blur-2xl transition duration-700 ease-out group-hover:opacity-100" />
+                          <img
+                            src={bunLogo}
+                            alt="Bun logo"
+                            className="relative h-full max-h-80 w-full max-w-80 transform-gpu rounded-3xl bg-background/80 p-4 shadow-xl transition duration-700 ease-out group-hover:rotate-[12deg] group-hover:scale-105 group-hover:[transform:rotateY(12deg)] group-hover:shadow-[0_15px_60px_rgba(0,0,0,0.4)]"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-center">
-                      <div className="group relative inline-flex h-full w-full items-center justify-center rounded-3xl bg-background/90">
-                        <span className="absolute inset-4 rounded-full bg-gradient-to-r from-primary/30 via-white/5 to-primary/30 opacity-0 blur-2xl transition duration-700 ease-out group-hover:opacity-100" />
-                        <img
-                          src={bunLogo}
-                          alt="Bun logo"
-                          className="relative h-full max-h-80 w-full max-w-80 transform-gpu rounded-3xl bg-background/80 p-4 shadow-xl transition duration-700 ease-out group-hover:rotate-[12deg] group-hover:scale-105 group-hover:[transform:rotateY(12deg)] group-hover:shadow-[0_15px_60px_rgba(0,0,0,0.4)]"
-                        />
+                    <div className="rounded-2xl border border-border/60 bg-background/80 p-6">
+                      <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Icon spotlight</p>
+                      <div className="flex flex-wrap gap-4">
+                        {introductionIconShowcase.map(icon => (
+                          <button
+                            key={icon.label}
+                            type="button"
+                            className="group inline-flex h-16 w-16 items-center justify-center rounded-full border border-border/70 bg-background/90 text-primary transition hover:scale-105 hover:border-primary hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
+                            aria-label={icon.label}
+                          >
+                            <Icon src={icon.src} className="h-6 w-6 transition duration-300 group-hover:scale-110" />
+                          </button>
+                        ))}
                       </div>
                     </div>
                   </div>
                 )}
                   {slug === "dialogues" && (
-                    <Accordion type="multiple" className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
-                    <AccordionItem value="dialogue-1">
-                      <AccordionTrigger>Dialogue one</AccordionTrigger>
-                        <AccordionContent>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        </AccordionContent>
-                      </AccordionItem>
-                      <AccordionItem value="dialogue-2">
-                        <AccordionTrigger>Dialogue two</AccordionTrigger>
-                        <AccordionContent>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        </AccordionContent>
-                      </AccordionItem>
-                      <AccordionItem value="dialogue-3">
-                        <AccordionTrigger>Dialogue three</AccordionTrigger>
-                        <AccordionContent>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
+                    <div className="space-y-6">
+                      <Accordion type="multiple" className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
+                        <AccordionItem value="dialogue-1">
+                          <AccordionTrigger>Dialogue one</AccordionTrigger>
+                          <AccordionContent>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                          </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="dialogue-2">
+                          <AccordionTrigger>Dialogue two</AccordionTrigger>
+                          <AccordionContent>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                          </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="dialogue-3">
+                          <AccordionTrigger>Dialogue three</AccordionTrigger>
+                          <AccordionContent>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                      <div className="h-px w-full bg-border/60" role="presentation" />
+                      <Accordion type="single" collapsible className="rounded-2xl border border-border/80 bg-background/80">
+                        {[
+                          { value: "dialogue-4", label: "Dialogue four" },
+                          { value: "dialogue-5", label: "Dialogue five" },
+                          { value: "dialogue-6", label: "Dialogue six" },
+                        ].map(entry => (
+                          <AccordionItem key={entry.value} value={entry.value} className="border-b border-border/60 last:border-b-0">
+                            <AccordionTrigger className="flex-row-reverse justify-between">
+                              <span className="flex-1 pr-3 text-left">{entry.label}</span>
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              {entry.value === "dialogue-4" ? (
+                                <div className="space-y-4">
+                                  <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-background/70 p-4 text-sm">
+                                    <Icon src={infoIcon} className="mt-1 h-5 w-5 text-primary" />
+                                    <p>
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et nulla bibendum, varius sem non, maximus erat. Duis cursus fermentum
+                                      ligula sed aliquet.
+                                    </p>
+                                  </div>
+                                  <Tabs defaultValue="dialogue-tab-1" className="w-full">
+                                    <TabsList className="inline-flex rounded-lg border border-border/60 bg-background/80">
+                                      <TabsTrigger
+                                        value="dialogue-tab-1"
+                                        className="rounded-none border-r border-border/60 px-4 py-1.5 text-sm data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
+                                      >
+                                        Tab one
+                                      </TabsTrigger>
+                                      <TabsTrigger
+                                        value="dialogue-tab-2"
+                                        className="rounded-none px-4 py-1.5 text-sm data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
+                                      >
+                                        Tab two
+                                      </TabsTrigger>
+                                    </TabsList>
+                                    <TabsContent value="dialogue-tab-1">
+                                      <div className="grid gap-4 rounded-xl border border-border/70 bg-background/80 p-4 md:grid-cols-2">
+                                        <p className="text-sm text-foreground/70">
+                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper, velit quis viverra vestibulum, purus lectus porttitor
+                                          augue, vel ornare augue arcu vel nisl.
+                                        </p>
+                                        <div className="flex items-center justify-center">
+                                          <img src={bunLogo} alt="Bun logo" className="h-32 w-32 object-contain" />
+                                        </div>
+                                      </div>
+                                    </TabsContent>
+                                    <TabsContent value="dialogue-tab-2">
+                                      <InteractiveDropDemo />
+                                    </TabsContent>
+                                  </Tabs>
+                                </div>
+                              ) : (
+                                <p>
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                                </p>
+                              )}
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </div>
                   )}
                   {slug === "vocabulary" && (
                     <Tabs defaultValue="semantic" className="mt-6">
@@ -428,6 +583,60 @@ export function LangCenApp() {
           })}
         </div>
       </main>
+    </div>
+  );
+}
+
+function InteractiveDropDemo() {
+  const [isDragging, setIsDragging] = useState(false);
+  const [isOver, setIsOver] = useState(false);
+  const [dropped, setDropped] = useState(false);
+
+  return (
+    <div className="space-y-4 rounded-xl border border-border/70 bg-background/80 p-4 text-sm">
+      <p className="text-foreground/70">Drag the square into the target to preview interaction states.</p>
+      <div className="flex flex-col gap-6 md:flex-row">
+        <div className="flex flex-1 items-center justify-center">
+          <div
+            draggable
+            onDragStart={() => {
+              setIsDragging(true);
+              setDropped(false);
+            }}
+            onDragEnd={() => {
+              setIsDragging(false);
+              setIsOver(false);
+            }}
+            className={cn(
+              "h-20 w-20 cursor-grab rounded-2xl border border-border/70 bg-gradient-to-br from-primary/90 to-primary/60 transition-all duration-200 ease-out",
+              "hover:shadow-[0_25px_45px_rgba(0,0,0,0.35)]",
+              isDragging ? "cursor-grabbing border-primary shadow-[0_20px_40px_rgba(0,0,0,0.4)]" : "",
+            )}
+          />
+        </div>
+        <div className="flex flex-1 items-center justify-center">
+          <div
+            onDragOver={event => {
+              event.preventDefault();
+              setIsOver(true);
+            }}
+            onDragLeave={() => setIsOver(false)}
+            onDrop={event => {
+              event.preventDefault();
+              setIsOver(false);
+              setIsDragging(false);
+              setDropped(true);
+            }}
+            className={cn(
+              "flex h-32 w-full max-w-sm items-center justify-center rounded-2xl border-2 border-dashed transition-all",
+              isOver ? "border-primary bg-primary/10" : "border-border/70",
+              dropped ? "border-emerald-500 bg-emerald-500/10" : "",
+            )}
+          >
+            {dropped ? "Dropped! 🎉" : "Drop here"}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 115%;
   }
 
   :root {
