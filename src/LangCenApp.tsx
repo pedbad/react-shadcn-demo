@@ -13,6 +13,8 @@ import { Switch } from "./components/ui/switch";
 import { Badge } from "./components/ui/badge";
 import infoIcon from "./icons/info.svg";
 import externalLinkIcon from "./icons/external-link.svg";
+import arrowDownAz from "./icons/arrow-down-az.svg";
+import arrowUpAz from "./icons/arrow-up-az.svg";
 import "./index.css";
 
 const lightPalette = [
@@ -129,6 +131,7 @@ export function LangCenApp() {
   const [openExercises, setOpenExercises] = useState<string[]>([exerciseNavItems[0].value]);
   const [activeSection, setActiveSection] = useState<string>("language-centre");
   const [darkPreview, setDarkPreview] = useState(false);
+  const [alphabeticAscending, setAlphabeticAscending] = useState(true);
 
   const handleExerciseNavigate = useCallback((value: string) => {
     setOpenExercises(prev => (prev.includes(value) ? prev : [...prev, value]));
@@ -338,16 +341,24 @@ export function LangCenApp() {
                         </ul>
                       </TabsContent>
                       <TabsContent value="alphabetic">
-                        <dl className="grid gap-3 text-sm text-foreground/80 md:grid-cols-2">
-                          <div>
-                            <dt className="font-semibold">A–M</dt>
-                            <dd>Alumni, Bursary, Corpus, Dissertation, Faculty, Matriculation.</dd>
+                        <div className="space-y-4">
+                          <button
+                            type="button"
+                            className="ml-auto flex items-center gap-2 rounded-full border border-border/60 px-3 py-1 text-xs uppercase tracking-[0.3em] text-foreground/70"
+                            onClick={() => setAlphabeticAscending(prev => !prev)}
+                          >
+                            {alphabeticAscending ? "A → Z" : "Z → A"}
+                            <Icon src={alphabeticAscending ? arrowDownAz : arrowUpAz} className="h-4 w-4 text-primary" />
+                          </button>
+                          <div className="rounded-2xl border border-border/60 bg-background/80">
+                            {Array.from({ length: 26 }, (_, i) => String.fromCharCode(alphabeticAscending ? 65 + i : 90 - i)).map(letter => (
+                              <div key={letter} className="border-b border-border/40 px-4 py-3 text-sm last:border-b-0">
+                                <p className="font-semibold">{letter}</p>
+                                <p className="text-foreground/70">Sample definition for {letter}…</p>
+                              </div>
+                            ))}
                           </div>
-                          <div>
-                            <dt className="font-semibold">N–Z</dt>
-                            <dd>Notation, Oration, Practicum, Quadrangle, Refectory, Vivat.</dd>
-                          </div>
-                        </dl>
+                        </div>
                       </TabsContent>
                     </Tabs>
                   )}
