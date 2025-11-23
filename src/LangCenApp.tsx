@@ -81,8 +81,8 @@ export function LangCenApp() {
                 The quick brown fox jumps over the lazy dog.
               </h1>
             <p className="body-lead">
-              This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, and shadcn/ui components. It showcases the full
-              stack we use to prototype Cambridge-inspired interfaces.
+              This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and
+              Cambridge-inspired SVG icons to showcase our full prototyping stack.
             </p>
             </div>
           </section>
