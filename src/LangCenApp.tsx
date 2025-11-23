@@ -8,6 +8,7 @@ import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang
 import { Icon } from "./components/Icon";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import infoIcon from "./icons/info.svg";
 import "./index.css";
 
 export function LangCenApp() {
@@ -80,10 +81,14 @@ export function LangCenApp() {
               <h1 id="language-centre-heading" className="heading-hero">
                 The quick brown fox jumps over the lazy dog.
               </h1>
-            <p className="body-lead">
-              This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and
-              custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
-            </p>
+            <div className="body-lead">
+              <div className="flex items-start gap-3 rounded-2xl border border-border/60 bg-background/80 p-4 text-left shadow-sm">
+                <Icon src={infoIcon} className="mt-1 h-6 w-6 text-primary" />
+                <p>
+                  This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
+                </p>
+              </div>
+            </div>
             </div>
           </section>
 
