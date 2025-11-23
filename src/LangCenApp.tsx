@@ -15,19 +15,71 @@ import externalLinkIcon from "./icons/external-link.svg";
 import "./index.css";
 
 const lightPalette = [
-  { label: "Light background", color: "oklch(1 0 0)", text: "oklch(0.2 0 0)" },
-  { label: "Light foreground", color: "oklch(0.145 0 0)", text: "oklch(0.98 0 0)" },
-  { label: "Light primary", color: "oklch(0.205 0 0)", text: "oklch(0.98 0 0)" },
-  { label: "Light secondary", color: "oklch(0.92 0 0)", text: "oklch(0.2 0 0)" },
-  { label: "Light accent", color: "oklch(0.85 0.02 245)", text: "oklch(0.2 0 0)" },
+  { label: "background", color: "oklch(0.98 0.005 85)", text: "oklch(0.12 0.005 240)" },
+  { label: "foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "card", color: "oklch(1 0 0)", text: "oklch(0.12 0.005 240)" },
+  { label: "card-foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "popover", color: "oklch(1 0 0)", text: "oklch(0.12 0.005 240)" },
+  { label: "popover-foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "primary", color: "oklch(0.38 0.08 245)", text: "oklch(1 0 0)" },
+  { label: "primary-foreground", color: "oklch(1 0 0)", text: "oklch(0.12 0.005 240)" },
+  { label: "secondary", color: "oklch(0.92 0.005 240)", text: "oklch(0.12 0.005 240)" },
+  { label: "secondary-foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "muted", color: "oklch(0.95 0.005 240)", text: "oklch(0.55 0.005 240)" },
+  { label: "muted-foreground", color: "oklch(0.55 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "accent", color: "oklch(0.85 0.02 245)", text: "oklch(0.12 0.005 240)" },
+  { label: "accent-foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "destructive", color: "oklch(0.577 0.245 27.325)", text: "oklch(1 0 0)" },
+  { label: "border", color: "oklch(0.88 0.005 240)", text: "oklch(0.12 0.005 240)" },
+  { label: "input", color: "oklch(0.88 0.005 240)", text: "oklch(0.12 0.005 240)" },
+  { label: "ring", color: "oklch(0.48 0.1 245)", text: "oklch(1 0 0)" },
+  { label: "chart-1", color: "oklch(0.38 0.08 245)", text: "oklch(1 0 0)" },
+  { label: "chart-2", color: "oklch(0.55 0.08 245)", text: "oklch(1 0 0)" },
+  { label: "chart-3", color: "oklch(0.75 0.05 245)", text: "oklch(0.12 0.005 240)" },
+  { label: "chart-4", color: "oklch(0.55 0.005 240)", text: "oklch(1 0 0)" },
+  { label: "chart-5", color: "oklch(0.8 0.002 240)", text: "oklch(0.12 0.005 240)" },
+  { label: "sidebar", color: "oklch(0.98 0.005 85)", text: "oklch(0.12 0.005 240)" },
+  { label: "sidebar-foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "sidebar-primary", color: "oklch(0.38 0.08 245)", text: "oklch(1 0 0)" },
+  { label: "sidebar-primary-foreground", color: "oklch(1 0 0)", text: "oklch(0.12 0.005 240)" },
+  { label: "sidebar-accent", color: "oklch(0.85 0.02 245)", text: "oklch(0.12 0.005 240)" },
+  { label: "sidebar-accent-foreground", color: "oklch(0.12 0.005 240)", text: "oklch(0.98 0.005 85)" },
+  { label: "sidebar-border", color: "oklch(0.88 0.005 240)", text: "oklch(0.12 0.005 240)" },
+  { label: "sidebar-ring", color: "oklch(0.48 0.1 245)", text: "oklch(1 0 0)" },
 ];
 
 const darkPalette = [
-  { label: "Dark background", color: "oklch(0.145 0 0)", text: "oklch(0.98 0 0)" },
-  { label: "Dark foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
-  { label: "Dark primary", color: "oklch(0.6 0.12 245)", text: "oklch(0.145 0 0)" },
-  { label: "Dark secondary", color: "oklch(0.25 0 0)", text: "oklch(0.98 0 0)" },
-  { label: "Dark accent", color: "oklch(0.3 0.01 245)", text: "oklch(0.98 0 0)" },
+  { label: "background", color: "oklch(0.145 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "card", color: "oklch(0.205 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "card-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "popover", color: "oklch(0.205 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "popover-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "primary", color: "oklch(0.6 0.12 245)", text: "oklch(0.145 0 0)" },
+  { label: "primary-foreground", color: "oklch(0.145 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "secondary", color: "oklch(0.25 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "secondary-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "muted", color: "oklch(0.2 0 0)", text: "oklch(0.7 0.01 240)" },
+  { label: "muted-foreground", color: "oklch(0.7 0.01 240)", text: "oklch(0.145 0 0)" },
+  { label: "accent", color: "oklch(0.3 0.01 245)", text: "oklch(0.985 0 0)" },
+  { label: "accent-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "destructive", color: "oklch(0.704 0.191 22.216)", text: "oklch(0.145 0 0)" },
+  { label: "border", color: "oklch(0.3 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "input", color: "oklch(0.3 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "ring", color: "oklch(0.7 0.12 245)", text: "oklch(0.145 0 0)" },
+  { label: "chart-1", color: "oklch(0.6 0.12 245)", text: "oklch(0.145 0 0)" },
+  { label: "chart-2", color: "oklch(0.75 0.1 245)", text: "oklch(0.145 0 0)" },
+  { label: "chart-3", color: "oklch(0.85 0.05 245)", text: "oklch(0.145 0 0)" },
+  { label: "chart-4", color: "oklch(0.5 0.005 240)", text: "oklch(0.985 0 0)" },
+  { label: "chart-5", color: "oklch(0.3 0.002 240)", text: "oklch(0.985 0 0)" },
+  { label: "sidebar", color: "oklch(0.205 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "sidebar-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "sidebar-primary", color: "oklch(0.6 0.12 245)", text: "oklch(0.145 0 0)" },
+  { label: "sidebar-primary-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "sidebar-accent", color: "oklch(0.3 0.01 245)", text: "oklch(0.985 0 0)" },
+  { label: "sidebar-accent-foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "sidebar-border", color: "oklch(0.3 0 0)", text: "oklch(0.985 0 0)" },
+  { label: "sidebar-ring", color: "oklch(0.7 0.12 245)", text: "oklch(0.145 0 0)" },
 ];
 
 export function LangCenApp() {
@@ -126,21 +178,27 @@ export function LangCenApp() {
                       </label>
                     ))}
                   </RadioGroup>
-                  <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/60">Light palette</p>
+                  <div className="flex flex-col gap-2">
                     {lightPalette.map(entry => (
                       <Badge key={entry.label} style={{ backgroundColor: entry.color, color: entry.text }}>
-                        {entry.label}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    {darkPalette.map(entry => (
-                      <Badge key={entry.label} style={{ backgroundColor: entry.color, color: entry.text }}>
-                        {entry.label}
+                        {entry.label} · {entry.color}
                       </Badge>
                     ))}
                   </div>
                 </div>
+                <div className="flex flex-col gap-3">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/60">Dark palette</p>
+                  <div className="flex flex-col gap-2">
+                    {darkPalette.map(entry => (
+                      <Badge key={entry.label} style={{ backgroundColor: entry.color, color: entry.text }}>
+                        {entry.label} · {entry.color}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
               </div>
             </div>
           </section>
