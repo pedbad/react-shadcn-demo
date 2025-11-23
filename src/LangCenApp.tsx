@@ -9,9 +9,26 @@ import { Icon } from "./components/Icon";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
+import { Badge } from "./components/ui/badge";
 import infoIcon from "./icons/info.svg";
 import externalLinkIcon from "./icons/external-link.svg";
 import "./index.css";
+
+const lightPalette = [
+  { label: "Light background", color: "oklch(1 0 0)", text: "oklch(0.2 0 0)" },
+  { label: "Light foreground", color: "oklch(0.145 0 0)", text: "oklch(0.98 0 0)" },
+  { label: "Light primary", color: "oklch(0.205 0 0)", text: "oklch(0.98 0 0)" },
+  { label: "Light secondary", color: "oklch(0.92 0 0)", text: "oklch(0.2 0 0)" },
+  { label: "Light accent", color: "oklch(0.85 0.02 245)", text: "oklch(0.2 0 0)" },
+];
+
+const darkPalette = [
+  { label: "Dark background", color: "oklch(0.145 0 0)", text: "oklch(0.98 0 0)" },
+  { label: "Dark foreground", color: "oklch(0.985 0 0)", text: "oklch(0.145 0 0)" },
+  { label: "Dark primary", color: "oklch(0.6 0.12 245)", text: "oklch(0.145 0 0)" },
+  { label: "Dark secondary", color: "oklch(0.25 0 0)", text: "oklch(0.98 0 0)" },
+  { label: "Dark accent", color: "oklch(0.3 0.01 245)", text: "oklch(0.98 0 0)" },
+];
 
 export function LangCenApp() {
   const [openExercises, setOpenExercises] = useState<string[]>([exerciseNavItems[0].value]);
@@ -76,37 +93,55 @@ export function LangCenApp() {
         </div>
         <div className="flex flex-col">
           <section id="language-centre" aria-labelledby="language-centre-heading" className="section-panel section-panel-hero">
-            <div className="section-inner">
-              <p className={cn("section-label text-sm", activeSection === "language-centre" && "section-label-active")}>
-                Language Centre
-              </p>
-              <h1 id="language-centre-heading" className="heading-hero">
-                The quick brown fox jumps over the lazy dog.
-              </h1>
-            <div className="body-lead">
-              <div className="flex items-start gap-3 rounded-2xl border border-border/60 bg-background/80 p-4 text-left shadow-sm">
-                <Icon src={infoIcon} className="mt-1 h-6 w-6 text-primary" />
-                <p>
-                  This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
+            <div className="section-inner space-y-6">
+              <div>
+                <p className={cn("section-label text-sm", activeSection === "language-centre" && "section-label-active")}>
+                  Language Centre
                 </p>
+                <h1 id="language-centre-heading" className="heading-hero">
+                  The quick brown fox jumps over the lazy dog.
+                </h1>
               </div>
-              <RadioGroup className="mt-6 grid gap-4 text-base text-foreground/80">
-                {[
-                  { label: "Bun v1.3.1", href: "https://bun.sh" },
-                  { label: "React v19.0.0", href: "https://react.dev" },
-                  { label: "Tailwind CSS v4", href: "https://tailwindcss.com" },
-                  { label: "shadcn/ui", href: "https://ui.shadcn.com" },
-                  { label: "Inter font", href: "https://rsms.me/inter" },
-                  { label: "Lucide icons", href: "https://lucide.dev" },
-                ].map(item => (
-                  <label key={item.label} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60">
-                    <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary h-6 w-6" />
-                    <span className="text-left flex-1">{item.label}</span>
-                    <Icon src={externalLinkIcon} className="h-4 w-4 text-primary" />
-                  </label>
-                ))}
-              </RadioGroup>
-            </div>
+              <div className="body-lead space-y-6">
+                <div className="flex items-start gap-3 rounded-2xl border border-border/60 bg-background/80 p-4 text-left shadow-sm">
+                  <Icon src={infoIcon} className="mt-1 h-6 w-6 text-primary" />
+                  <p>
+                    This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
+                  </p>
+                </div>
+                <div className="grid gap-6 md:grid-cols-3">
+                  <RadioGroup className="grid gap-4 text-base text-foreground/80">
+                    {[
+                      { label: "Bun v1.3.1", href: "https://bun.sh" },
+                      { label: "React v19.0.0", href: "https://react.dev" },
+                      { label: "Tailwind CSS v4", href: "https://tailwindcss.com" },
+                      { label: "shadcn/ui", href: "https://ui.shadcn.com" },
+                      { label: "Inter font", href: "https://rsms.me/inter" },
+                      { label: "Lucide icons", href: "https://lucide.dev" },
+                    ].map(item => (
+                      <label key={item.label} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60">
+                        <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary h-6 w-6" />
+                        <span className="text-left flex-1">{item.label}</span>
+                        <Icon src={externalLinkIcon} className="h-4 w-4 text-primary" />
+                      </label>
+                    ))}
+                  </RadioGroup>
+                  <div className="flex flex-col gap-3">
+                    {lightPalette.map(entry => (
+                      <Badge key={entry.label} style={{ backgroundColor: entry.color, color: entry.text }}>
+                        {entry.label}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {darkPalette.map(entry => (
+                      <Badge key={entry.label} style={{ backgroundColor: entry.color, color: entry.text }}>
+                        {entry.label}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
