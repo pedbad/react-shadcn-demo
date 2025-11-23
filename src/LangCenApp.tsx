@@ -8,6 +8,7 @@ import { LangCenNav, exerciseNavItems, langCenNavItems } from "./components/lang
 import { Icon } from "./components/Icon";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
 import infoIcon from "./icons/info.svg";
 import "./index.css";
 
@@ -88,6 +89,21 @@ export function LangCenApp() {
                   This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
                 </p>
               </div>
+              <RadioGroup className="mt-4 grid gap-3 text-sm text-foreground/80 md:grid-cols-2">
+                {[
+                  { label: "Bun v1.3.1", href: "https://bun.sh" },
+                  { label: "React v19.0.0", href: "https://react.dev" },
+                  { label: "Tailwind CSS v4", href: "https://tailwindcss.com" },
+                  { label: "shadcn/ui", href: "https://ui.shadcn.com" },
+                  { label: "Inter font", href: "https://rsms.me/inter" },
+                  { label: "Lucide icons", href: "https://lucide.dev" },
+                ].map(item => (
+                  <label key={item.label} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 bg-background/70 p-3 shadow-sm transition hover:border-primary/50">
+                    <RadioGroupItem value={item.href} />
+                    <span className="text-left">{item.label}</span>
+                  </label>
+                ))}
+              </RadioGroup>
             </div>
             </div>
           </section>
