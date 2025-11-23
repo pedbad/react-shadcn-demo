@@ -319,7 +319,14 @@ export function LangCenApp() {
                       </ul>
                     </div>
                     <div className="flex items-center justify-center">
-                      <img src={bunLogo} alt="Bun logo" className="max-h-64 w-auto object-contain" />
+                      <div className="group relative inline-flex h-64 w-64 items-center justify-center">
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 via-white/10 to-primary/30 opacity-0 blur-2xl transition duration-700 group-hover:opacity-100" />
+                        <img
+                          src={bunLogo}
+                          alt="Bun logo"
+                          className="relative h-48 w-48 transform-gpu rounded-full bg-background/80 p-4 shadow-xl transition duration-500 group-hover:rotate-6 group-hover:scale-105 group-hover:shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
