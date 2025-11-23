@@ -307,7 +307,7 @@
   }
 
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.3em] text-foreground/60 transition-colors;
+    @apply text-2xl font-semibold uppercase tracking-[0.3em] text-foreground/60 transition-colors;
   }
 
   .section-label-active {
