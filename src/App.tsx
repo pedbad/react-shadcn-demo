@@ -11,13 +11,13 @@ export function App() {
   return (
     <div className="w-full px-6 py-8 text-center relative z-10 space-y-10">
       <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
-        {[{ src: bunLogo, label: "Bun", href: "https://bun.sh" }, { src: reactLogo, label: "React", href: "https://react.dev" }, { src: tailwindLogo, label: "Tailwind", href: "https://tailwindcss.com" }, { src: shadcnLogo, label: "shadcn/ui", href: "https://ui.shadcn.com" }].map(logo => (
+        {[{ src: bunLogo, label: "Bun", href: "https://bun.sh", rotation: "group-hover:[transform:rotateX(360deg)]" }, { src: reactLogo, label: "React", href: "https://react.dev", rotation: "group-hover:[transform:rotateY(360deg)]" }, { src: tailwindLogo, label: "Tailwind", href: "https://tailwindcss.com", rotation: "group-hover:[transform:rotate3d(1,1,0,360deg)]" }, { src: shadcnLogo, label: "shadcn/ui", href: "https://ui.shadcn.com", rotation: "group-hover:[transform:rotate3d(1,-1,0,360deg)]" }].map(logo => (
           <a key={logo.label} href={logo.href} target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-3">
-            <span className="relative inline-flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 transition duration-300 group-hover:from-primary/40 group-hover:to-primary/30 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]">
+            <span className="relative inline-flex h-36 w-36 items-center justify-center rounded-full transition duration-300 group-hover:bg-gradient-to-r group-hover:from-[color-mix(in_oklch,var(--primary),var(--background)60%)] group-hover:to-[color-mix(in_oklch,var(--primary),var(--accent)40%)] group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]">
               <img
                 src={logo.src}
                 alt={`${logo.label} logo`}
-                className="h-24 w-24 transition duration-500 group-hover:rotate-[360deg]"
+                className={`h-24 w-24 transition duration-700 transform ${logo.rotation}`}
               />
             </span>
             <span className="text-xs uppercase tracking-[0.2em] text-foreground/70">{logo.label}</span>
