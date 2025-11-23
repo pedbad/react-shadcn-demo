@@ -183,7 +183,7 @@ export function LangCenApp() {
                     ))}
                     </Accordion>
                   )}
-                  <div className="pointer-events-none absolute bottom-6 right-6">
+                  <div className="pointer-events-none absolute -bottom-6 right-10">
                     <a href="#language-centre" className="back-to-top pointer-events-auto" aria-label="Back to top">
                       ↑
                     </a>
