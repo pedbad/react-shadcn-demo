@@ -161,7 +161,7 @@ export function LangCenApp() {
                     This demo runs on Bun v1.3.1 with React 19, Tailwind CSS 4, shadcn/ui components, the Inter typeface, and custom SVG icons inspired by the lucide set to showcase our full prototyping stack.
                   </p>
                 </div>
-                <div className="grid gap-6 md:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
                   <RadioGroup className="grid gap-4 text-base text-foreground/80">
                     {[
                       { label: "Bun v1.3.1", href: "https://bun.sh" },
@@ -172,7 +172,7 @@ export function LangCenApp() {
                       { label: "Lucide icons", href: "https://lucide.dev" },
                     ].map(item => (
                       <label key={item.label} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/60 px-4 py-3 shadow-sm transition hover:border-primary/60">
-                        <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary h-6 w-6" />
+                      <RadioGroupItem value={item.href} className="data-[state=checked]:border-primary h-6 w-6" />
                         <span className="text-left flex-1">{item.label}</span>
                         <Icon src={externalLinkIcon} className="h-4 w-4 text-primary" />
                       </label>
