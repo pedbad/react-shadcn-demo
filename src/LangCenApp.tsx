@@ -212,20 +212,22 @@ export function LangCenApp() {
                     Dark
                   </div>
                 </div>
-                <div className={cn("rounded-2xl border border-border/60 p-4 shadow-sm", darkPreview && "dark bg-[#1a1a1a] text-white")}> 
-                  <div className="grid gap-4 text-sm md:grid-cols-3">
-                    {["primary", "secondary", "tertiary"].map(variant => (
-                      <div key={variant} className="space-y-2">
-                        <p className="text-xs uppercase tracking-[0.3em] text-foreground/60">{variant} buttons</p>
-                        <div className="flex flex-wrap gap-2">
-                          {["xs", "sm", "md", "lg", "xl"].map(size => (
-                            <button key={size} className={cn("btn", `btn-${variant}`, `btn-${size}`)}>
-                              {variant} · {size}
-                            </button>
-                          ))}
+                <div className={cn("rounded-2xl border border-border/60 p-4 shadow-sm", darkPreview ? "bg-[#111827]" : "bg-background")}>
+                  <div className={cn(darkPreview && "dark text-white")}>
+                    <div className="grid gap-4 text-sm md:grid-cols-3">
+                      {["primary", "secondary", "tertiary"].map(variant => (
+                        <div key={variant} className="space-y-2">
+                          <p className="text-xs uppercase tracking-[0.3em] text-foreground/60">{variant} buttons</p>
+                          <div className="flex flex-wrap gap-2">
+                            {["xs", "sm", "md", "lg", "xl"].map(size => (
+                              <button key={size} className={cn("btn", `btn-${variant}`, `btn-${size}`)}>
+                                {variant} · {size}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
