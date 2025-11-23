@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type CSSProperties } from "react";
 import { cn } from "./lib/utils";
 
 import layersIcon from "./icons/layers.svg";
@@ -82,6 +82,48 @@ const darkPalette = [
   { label: "sidebar-border", color: "oklch(0.3 0 0)", text: "oklch(0.985 0 0)" },
   { label: "sidebar-ring", color: "oklch(0.7 0.12 245)", text: "oklch(0.145 0 0)" },
 ];
+
+const lightThemeVars: CSSProperties = {
+  "--background": "oklch(0.98 0.005 85)",
+  "--foreground": "oklch(0.12 0.005 240)",
+  "--card": "oklch(1 0 0)",
+  "--card-foreground": "oklch(0.12 0.005 240)",
+  "--popover": "oklch(1 0 0)",
+  "--popover-foreground": "oklch(0.12 0.005 240)",
+  "--primary": "oklch(0.38 0.08 245)",
+  "--primary-foreground": "oklch(1 0 0)",
+  "--secondary": "oklch(0.92 0.005 240)",
+  "--secondary-foreground": "oklch(0.12 0.005 240)",
+  "--muted": "oklch(0.95 0.005 240)",
+  "--muted-foreground": "oklch(0.55 0.005 240)",
+  "--accent": "oklch(0.85 0.02 245)",
+  "--accent-foreground": "oklch(0.12 0.005 240)",
+  "--destructive": "oklch(0.577 0.245 27.325)",
+  "--border": "oklch(0.88 0.005 240)",
+  "--input": "oklch(0.88 0.005 240)",
+  "--ring": "oklch(0.48 0.1 245)",
+};
+
+const darkThemeVars: CSSProperties = {
+  "--background": "oklch(0.145 0 0)",
+  "--foreground": "oklch(0.985 0 0)",
+  "--card": "oklch(0.205 0 0)",
+  "--card-foreground": "oklch(0.985 0 0)",
+  "--popover": "oklch(0.205 0 0)",
+  "--popover-foreground": "oklch(0.985 0 0)",
+  "--primary": "oklch(0.6 0.12 245)",
+  "--primary-foreground": "oklch(0.145 0 0)",
+  "--secondary": "oklch(0.25 0 0)",
+  "--secondary-foreground": "oklch(0.985 0 0)",
+  "--muted": "oklch(0.2 0 0)",
+  "--muted-foreground": "oklch(0.7 0.01 240)",
+  "--accent": "oklch(0.3 0.01 245)",
+  "--accent-foreground": "oklch(0.985 0 0)",
+  "--destructive": "oklch(0.704 0.191 22.216)",
+  "--border": "oklch(0.3 0 0)",
+  "--input": "oklch(0.3 0 0)",
+  "--ring": "oklch(0.7 0.12 245)",
+};
 
 export function LangCenApp() {
   const [openExercises, setOpenExercises] = useState<string[]>([exerciseNavItems[0].value]);
@@ -212,8 +254,11 @@ export function LangCenApp() {
                     Dark
                   </div>
                 </div>
-                <div className={cn("rounded-2xl border border-border/60 p-4 shadow-sm", darkPreview ? "bg-[#111827]" : "bg-background")}>
-                  <div className={cn(darkPreview && "dark text-white")}>
+                <div
+                  className="rounded-2xl border border-border/60 p-4 shadow-sm"
+                  style={darkPreview ? darkThemeVars : lightThemeVars}
+                >
+                  <div className={cn(darkPreview && "text-white")}> 
                     <div className="grid gap-4 text-sm md:grid-cols-3">
                       {["primary", "secondary", "tertiary"].map(variant => (
                         <div key={variant} className="space-y-2">
