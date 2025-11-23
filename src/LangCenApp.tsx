@@ -319,12 +319,12 @@ export function LangCenApp() {
                       </ul>
                     </div>
                     <div className="flex items-center justify-center">
-                      <div className="group relative inline-flex h-64 w-64 items-center justify-center">
-                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 via-white/10 to-primary/30 opacity-0 blur-2xl transition duration-700 group-hover:opacity-100" />
+                      <div className="group relative inline-flex h-full w-full items-center justify-center rounded-3xl bg-background/90">
+                        <span className="absolute inset-4 rounded-full bg-gradient-to-r from-primary/30 via-white/5 to-primary/30 opacity-0 blur-2xl transition duration-700 ease-out group-hover:opacity-100" />
                         <img
                           src={bunLogo}
                           alt="Bun logo"
-                          className="relative h-48 w-48 transform-gpu rounded-full bg-background/80 p-4 shadow-xl transition duration-500 group-hover:rotate-6 group-hover:scale-105 group-hover:shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+                          className="relative h-full max-h-80 w-full max-w-80 transform-gpu rounded-3xl bg-background/80 p-4 shadow-xl transition duration-700 ease-out group-hover:rotate-[12deg] group-hover:scale-105 group-hover:[transform:rotateY(12deg)] group-hover:shadow-[0_15px_60px_rgba(0,0,0,0.4)]"
                         />
                       </div>
                     </div>
