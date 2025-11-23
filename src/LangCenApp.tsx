@@ -103,22 +103,22 @@ export function LangCenApp() {
                   </p>
                   {slug === "dialogues" && (
                     <Accordion type="multiple" className="divide-y divide-border/60 rounded-2xl border border-border/80 bg-background/80">
-                      <AccordionItem value="dialogue-1">
-                        <AccordionTrigger>Academic mentoring scenario</AccordionTrigger>
-                        <AccordionContent>
-                          Sample script highlighting student and coach dialogue, infused with Cambridge tone and vocabulary.
-                        </AccordionContent>
-                      </AccordionItem>
-                      <AccordionItem value="dialogue-2">
-                        <AccordionTrigger>International admissions support</AccordionTrigger>
-                        <AccordionContent>
-                          Demonstrates conversational blocks used for visa, housing, and onboarding queries.
-                        </AccordionContent>
-                      </AccordionItem>
-                      <AccordionItem value="dialogue-3">
-                        <AccordionTrigger>Research collaboration workshops</AccordionTrigger>
-                        <AccordionContent>
-                          Outlines call-and-response exercises that reinforce technical terminology and pronunciation.
+                    <AccordionItem value="dialogue-1">
+                      <AccordionTrigger>Dialogue one</AccordionTrigger>
+                      <AccordionContent>
+                        Sample script highlighting student and coach dialogue, infused with Cambridge tone and vocabulary.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="dialogue-2">
+                      <AccordionTrigger>Dialogue two</AccordionTrigger>
+                      <AccordionContent>
+                        Demonstrates conversational blocks used for visa, housing, and onboarding queries.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="dialogue-3">
+                      <AccordionTrigger>Dialogue three</AccordionTrigger>
+                      <AccordionContent>
+                        Outlines call-and-response exercises that reinforce technical terminology and pronunciation.
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
