@@ -13,7 +13,8 @@ export function App() {
       <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
         {[{ src: bunLogo, label: "Bun", href: "https://bun.sh", rotation: "group-hover:[transform:rotateX(360deg)]", glow: "bg-[radial-gradient(circle,theme(colors.destructive)_0%,transparent_70%)]" }, { src: reactLogo, label: "React", href: "https://react.dev", rotation: "group-hover:[transform:rotateY(360deg)]", glow: "bg-[radial-gradient(circle,theme(colors.ring)_0%,transparent_70%)]" }, { src: tailwindLogo, label: "Tailwind", href: "https://tailwindcss.com", rotation: "group-hover:[transform:rotate3d(1,1,0,360deg)]", glow: "bg-[radial-gradient(circle,theme(colors.chart-3)_0%,transparent_70%)]" }, { src: shadcnLogo, label: "shadcn/ui", href: "https://ui.shadcn.com", rotation: "group-hover:[transform:rotate3d(1,-1,0,360deg)]", glow: "bg-[radial-gradient(circle,theme(colors.chart-4)_0%,transparent_70%)]" }].map(logo => (
           <a key={logo.label} href={logo.href} target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-3">
-            <span className={`relative inline-flex h-36 w-36 items-center justify-center rounded-full transition duration-300 ${logo.glow} opacity-0 group-hover:opacity-100 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]`}>
+            <span className="relative inline-flex h-36 w-36 items-center justify-center rounded-full">
+              <span className={`absolute inset-0 rounded-full transition duration-300 ${logo.glow} opacity-0 group-hover:opacity-100 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]`} />
               <img
                 src={logo.src}
                 alt={`${logo.label} logo`}
