@@ -15,6 +15,7 @@ import infoIcon from "./icons/info.svg";
 import externalLinkIcon from "./icons/external-link.svg";
 import arrowDownAz from "./icons/arrow-down-az.svg";
 import arrowUpAz from "./icons/arrow-up-az.svg";
+import bunLogo from "./logo.svg";
 import "./index.css";
 
 const lightPalette = [
@@ -318,7 +319,7 @@ export function LangCenApp() {
                       </ul>
                     </div>
                     <div className="flex items-center justify-center">
-                      <img src="/src/logo.svg" alt="Bun logo" className="max-h-64 w-auto object-contain" />
+                      <img src={bunLogo} alt="Bun logo" className="max-h-64 w-auto object-contain" />
                     </div>
                   </div>
                 )}
