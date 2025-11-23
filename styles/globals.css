@@ -331,7 +331,7 @@
   }
 
   .nav-link {
-    @apply border-solid text-[0.45rem] font-medium tracking-[0.25em] text-foreground/55 uppercase transition-all duration-200 hover:text-primary;
+    @apply border-solid text-[0.8rem] font-medium tracking-[0.15em] text-foreground/60 uppercase transition-all duration-200 hover:text-primary;
   }
 
   .nav-link-horizontal {

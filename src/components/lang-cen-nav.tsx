@@ -182,7 +182,7 @@ function NavList({
 }: NavListProps) {
   return (
     <ul
-      className={cn("items-center gap-3 text-[0.5rem]", {
+      className={cn("items-center gap-3 text-[0.8rem]", {
         "flex justify-end": orientation === "horizontal",
         "flex flex-col items-stretch gap-3 py-2 text-sm":
           orientation === "vertical",
