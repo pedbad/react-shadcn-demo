@@ -10,6 +10,9 @@ const server = serve({
     "/landing/*": landing,
     "/langcen": langcen,
     "/langcen/*": langcen,
+    "/langcen.html": langcen,
+    "/landing.html": landing,
+    "/index.html": index,
     "/*": index,
 
     "/api/hello": {

@@ -126,7 +126,7 @@ console.log(`📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? 
 const resolvedNaming =
   naming ??
   {
-    entry: "[dir]/[name]-[hash].[ext]",
+    entry: "[dir]/[name].[ext]",
     chunk: "chunks/[name]-[hash].[ext]",
     asset: "assets/[name]-[hash].[ext]",
   };
@@ -138,12 +138,26 @@ const result = await Bun.build({
   minify: true,
   target: "browser",
   sourcemap: "linked",
+  publicPath: "./",
   naming: resolvedNaming,
   define: {
     "process.env.NODE_ENV": JSON.stringify("production"),
   },
   ...cliOverrides,
 });
+
+await Promise.all(
+  result.outputs
+    .filter(output => /\.(js|css|html)$/.test(output.path))
+    .map(async output => {
+      const file = Bun.file(output.path);
+      const contents = await file.text();
+      const normalized = contents.replaceAll("./../assets/", "./assets/");
+      if (normalized !== contents) {
+        await Bun.write(output.path, normalized);
+      }
+    })
+);
 
 const end = performance.now();
 

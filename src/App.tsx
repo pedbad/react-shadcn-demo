@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Icon } from "@/components/Icon";
 import { APITester } from "./APITester";
 import bunLogo from "./logo.svg";
 import reactLogo from "./react.svg";
 import tailwindLogo from "./icons/tailwind.svg";
 import shadcnLogo from "./icons/shadcn.svg";
+import externalLinkIcon from "./icons/external-link.svg";
 import "./index.css";
 
 export function App() {
@@ -25,6 +27,29 @@ export function App() {
           </a>
         ))}
       </div>
+      <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
+        <p>
+          <a href="https://bun.sh" target="_blank" rel="noreferrer" className="font-semibold text-primary underline-offset-4 hover:underline inline-flex items-center gap-1">
+            Bun
+            <Icon src={externalLinkIcon} className="h-4 w-4" />
+          </a>{" "}
+          is a modern JavaScript runtime and package manager built for speed. Lightning-fast installs, a built-in bundler, and an integrated test runner reduce setup time and keep the developer experience simple.
+        </p>
+        <p>
+          <a href="https://tailwindcss.com" target="_blank" rel="noreferrer" className="font-semibold text-primary underline-offset-4 hover:underline inline-flex items-center gap-1">
+            Tailwind CSS
+            <Icon src={externalLinkIcon} className="h-4 w-4" />
+          </a>{" "}
+          embraces a utility-first approach, letting us compose responsive, consistent interfaces directly in JSX without writing bespoke styles for every component.
+        </p>
+        <p>
+          <a href="https://ui.shadcn.com" target="_blank" rel="noreferrer" className="font-semibold text-primary underline-offset-4 hover:underline inline-flex items-center gap-1">
+            shadcn/ui
+            <Icon src={externalLinkIcon} className="h-4 w-4" />
+          </a>{" "}
+          provides accessible, unstyled primitives that pair perfectly with Tailwind, so we keep full control over branding and aesthetics while shipping quickly.
+        </p>
+      </div>
       <Card>
         <CardHeader className="gap-4">
           <CardTitle className="text-3xl font-bold">Bun + React</CardTitle>
@@ -38,10 +63,10 @@ export function App() {
         </CardContent>
         <CardFooter className="flex flex-wrap items-center justify-center gap-3">
           <Button asChild>
-            <a href="/langcen">Visit the Language Centre demo</a>
+            <a href="langcen.html">Visit the Language Centre demo</a>
           </Button>
           <Button variant="outline" asChild>
-            <a href="/landing">Explore the landing grid</a>
+            <a href="landing.html">Explore the landing grid</a>
           </Button>
         </CardFooter>
       </Card>

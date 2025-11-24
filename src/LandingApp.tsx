@@ -11,6 +11,7 @@ import eyeIcon from "./icons/eye.svg";
 import eyeOffIcon from "./icons/eye-off.svg";
 import infoIcon from "./icons/info.svg";
 import panelLeftIcon from "./icons/panel-left.svg";
+import externalLinkIcon from "./icons/external-link.svg";
 import "./index.css";
 
 const numberWords = [
