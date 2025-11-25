@@ -246,7 +246,7 @@
   }
 
 .section-panel {
-  @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-[100vh] py-28;
+  @apply relative isolate w-full overflow-hidden scroll-mt-32 min-h-screen py-28;
   background: linear-gradient(180deg, var(--section-panel-wave) 0%, var(--section-panel-bg) 100%);
   opacity: 0;
   transform: translateY(60px);
@@ -260,7 +260,10 @@
 
 .section-panel::before {
   content: "";
-  @apply absolute inset-0 block bg-[var(--section-panel-bg)];
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: var(--section-panel-bg);
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   opacity: 0.8;
 }
